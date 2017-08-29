@@ -18,10 +18,12 @@
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
+\newtheorem{exem}{Example}
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
+\newcommand{\fim}{ \hfill{\mbox{$\rule{2mm}{2mm}$}}\vskip.6cm }
 
 % Shortcuts.
 % One can define new commands to shorten frequently used
@@ -58,15 +60,21 @@ L\'{i}via Fl\'{a}via Carletti Jatob\'{a}, Caroline Nascimento Parajara \\ and Gu
 
 \section{Introduction}
 
-The double retrograde vaporization phenomenon corresponds to a special shape of the dew-point curve, exhibiting a ``S'' shape (with three dew points) or a double-dome structure (with four dew points). This phenomenon was firstly investigated by \cite{chen_1} and \cite{chen_2} for the binary mixtures involving methane + n-butane and methane + n-pentane, under specified temperature. More recently, \cite{raeissi_1} identified a double-dome behaviour for the binary mixture ethane + limonene at $T = 307.4$ K and in a narrow range of compositions (close to the pure ethane). Furthermore, \cite{raeissi_2} indicated that the Peng-Robinson equation of state \cite{peng_robinson}, with classical mixing rules, was capable to qualitatively predict the phenomenon.
+The double retrograde vaporization phenomenon corresponds to a special shape of the dew-point curve, exhibiting a ``S'' shape (with three dew points) or a double-dome structure (with four dew points). This phenomenon was firstly investigated by \cite{chen_1} and \cite{chen_2} for binary mixtures involving methane + n-butane and methane + n-pentane, under specified temperature. More recently, \cite{raeissi_1} identified a double-dome behavior for the binary mixture ethane + limonene at $T = 307.4$ K and in a narrow range of compositions (close to the pure ethane). Furthermore, \cite{raeissi_2} indicated that the Peng-Robinson equation of state \cite{peng_robinson}, with classical mixing rules, was capable to qualitatively predict this phenomenon.
 
-The robust calculation of dew point pressures (under specified temperature) is a very hard task, mainly if we consider the vicinity of the mixture critical point. Furthermore, some roots of the phase equilibrium problem show very small radius of convergence for Newton-type methods, as indicated by \cite{jnsa}. For this reason, the development of robust frameworks for this kind of problem is extremely relevant. Among several possibilities, we can cite the robust methodology of the numerical inversion of functions from the plane to the plane, proposed by \cite{malta}. This technique \cite{malta} proposes -- considering a restrict set of functions -- the generation of the critical curves \footnote{the term ``critical'' will assume two meanings in this work: in the mathematical sense, a critical point is a nonregular point (where the Jacobian matrix is non-invertible); in the thermodynamic sense, the critical point is that where we cannot distinguish between the properties of the phases.}(here, not in the thermodynamic meaning, but referring to the points where the Jacobian of the nonlinear algebraic system is singular), the construction of a bank of solved points (with good initial estimates) and, finally, the inversion of the desired points (calculation of all pre-images of a such image).
+In the vicinity of the mixture critical point, the robust calculation of dew point pressures (under specified temperature) is a very hard task. Furthermore, some roots of the phase equilibrium problem show very small radius of convergence for Newton-type methods, as indicated by \cite{jnsa}. For this reason, the development of robust frameworks for this kind of problem is extremely relevant. Among several possibilities, we foccus on the robust methodology of the numerical inversion of functions, proposed by \cite{malta}, for functions from
+the plane to the plane. This technique \cite{malta} proposes --- considering a restrict set of functions --- the generation of the critical curves in the mathematical 
+sense\footnote{The term ``critical''  assumes two meanings in this work: in the mathematical sense, a critical point of a function
+ is a nonregular point (where the jacobian matrix is non-invertible); in the thermodynamic sense, the critical point is that where we cannot distinguish between the properties of the phases.}, the construction of a bank of solved points (to be used as 
+ with good initial estimates for the solution) and, finally, the inversion of the desired points (calculation of all pre-images of a such image).
 
-As far as we can see, the first application of the numerical inversion of functions from the plane to the plane in a chemical engineering problem was presented by \cite{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes.
+As far as we can know, the first application of the methodology  of numerical inversion of two-variable functions in a chemical engineering problem was presented by \cite{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes.
 
-More recenlty, \cite{ireme} presented the initial results regarding the application of the methodology proposed by \cite{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene. However, some relevant aspects were not approached by \cite{ireme} and will be detailed in this work. Among these aspects, we can cite: (i) the influence of the system temperature in the critical curves and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images will be altered). Furthermore, one of the objectives of this work is to provide a mathematical view of this challenging nonlinear algebraic system, which can be useful in the development of numerical tools for solving high-pressure phase equilibrium problems. As pointed previously, the solution of this kind of nonlinear system with typical root-finding algorithms (such as Newton's methods) is not a trivial task, even when using more sophisticated numerical tools \cite{jnsa}.
+More recenlty, \cite{ireme} presented some initial results regarding the application of the methodology proposed by \cite{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene. However, a few relevant aspects were not considered there and we discuss them in this work. Among these aspects, we mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). Furthermore, one of the objectives of this work is to provide a mathematical view of this challenging nonlinear algebraic system, which can be useful in the development of numerical tools for solving high-pressure phase equilibrium problems. As pointed previously, the solution of this kind of nonlinear system with typical root-finding algorithms (such as Newton's methods) is not a trivial task, even when using more sophisticated numerical tools \cite{jnsa}.
 
-Table \ref{tab:roots_double_dome} presents the compositions and pressures for the dew point calculation in the system ethane + limonene at $T = 307.4$ K and $y_1 = 0.998966$, where the ``double-dome'' structure appears, with four dew point pressures (and compositions of the liquid phase). We noted, considering the data presented in Table \ref{tab:roots_double_dome}, that one root corresponds to a low pressure root (Root 1) and the other roots are very close (high pressure roots). From the point of view of the calculation techniques -- using classical numerical methods, such as Newton-Raphson methods -- we are interested in robust methodologies capable to find all roots, but mainly with some features to find in a robust way the high pressure roots.
+Table \ref{tab:roots_double_dome} presents the compositions and pressures for the dew point calculation in the system ethane + limonene at $T = 307.4$ K and $y_1 = 0.998966$, where the ``double-dome'' structure appears, with four dew point pressures (and compositions of the liquid phase). We note, considering the data presented in Table \ref{tab:roots_double_dome}, that one root corresponds to a low pressure root (Root 1) and the othersare high pressure roots (which are close to each other). From the point of view of the calculation techniques -- using classical numerical methods, such as Newton-Raphson methods -- we are interested in robust methodologies capable to find all roots, but mainly with some features to find in a robust way the high pressure roots.
+
+We must mention that the composition of vapor phase is arbitrarily chosen, in order to produce the thermodynamic phenomenon.
 
 \begin{table}[http!]
 	\begin{center}
@@ -103,8 +111,8 @@ Root & $x_1$ & $P$ (kPa) \\
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[scale=0.50]{curvas.pdf}
-		\caption{The thermodynamic critical curve in the system ethane + limonene.}\label{fig:critical_thermo}
+		\includegraphics[scale=0.50]{curvas_ponto_orvalho.pdf}
+		\caption{Dew point curves for the system ethane + limonene at several temperatures.}\label{fig:dew_point_curve}
 	\end{center}
 \end{figure}
 
@@ -113,9 +121,9 @@ Root & $x_1$ & $P$ (kPa) \\
 
 \subsection{Thermodynamic models and problem formulation}
 
-All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), will be conducted with the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in \cite{ireme}.
+All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), will be conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in\cite{ireme}.
 
-The phase equilibrium problem can be formulated as (considering a binary mixture):
+For a binary mixture, the phase equilibrium problem can be formulated as:
 \begin{eqnarray}
 \hat{\phi}_i^L x_i = \hat{\phi}_i^V y_i \hspace{0.1in} i = 1,2
 \end{eqnarray}
@@ -133,19 +141,135 @@ The nonlinear algebraic system can be re-stated as:
 \begin{equation}
 F(p) = q,
 \end{equation}
-where $p$ is a point in the domain and $q$ is a point in the image. Ordinarily, we are interested to solve $F(p) = (0,0)$ (where $(0,0)$ represents a null vector).
+where $p$ is a point in the domain and $q$ is a point in the image (range) of $F$. Ordinarily, we are interested to solve $F(p) = (0,0)$ (where $q=(0,0)$ represents the null vector in the euclidean plane).
+
+\subsection{TO BE DELETED - a few ideas on the inversion of 
+functions}
+To understand the methodology of inversion of functions to solve nonlinear systems of equations, we first consider a simple 1D example.
+\begin{exem} 
+\begin{em}
+Let $F(p)=3p^3-p$. By examining the graph of $F$ it is possible to 
+check that the equation for $q$,
+\begin{eqnarray*}
+F(p)=q, \ \ \text{that is}, \ 3p^3-p=q\ ,
+\end{eqnarray*}
+has three possibilities as far as the number of solutions, $\eta(q)$,
+is concerned,
+\begin{eqnarray*}
+\eta(q)= \left\{ 
+\begin{array}{rl}
+1 , & \text{if } q< -2/9\\
+2, & \text{if } q= -2/9\\
+3 , & \text{if }  -2/9< q  < 2/9 \\
+2 , & \text{if } q= 2/9\\
+1 , & \text{if } q> 2/9\\
+\end{array}
+\right.
+\end{eqnarray*}
+One way to determine the transition points where 
+ the number of solutions change
+is to look at the image of the critical points. The critical points
+(where the derivative is not invertible) satisfy
+\begin{eqnarray*}
+F'(p)=9p^2-1 = 0, \ \text{that is } p=\pm 1/3\ .
+\end{eqnarray*}
+Therefore, the transition points are $F(\pm 1/3)=\mp 2/9$. 
+
+Now, the range of $F$ is partitioned in five subsets, 
+$\mathbb{R}= R_1\cup T_2\cup R_3 \cup T_4 \cup R_5$, 
+\begin{eqnarray*}
+\text{transitional sets:}&& T_2=\{-\frac{2}{9}\}, 
+\ T_4= \{\frac{2}{9}\}\ ,
+\\
+ \text{non-transitional sets:} && R_1=]-\infty,-\frac{2}{9}[\ , \ 
+ R_3 = ]-\frac{2}{9},\frac{2}{9}[\ , \ R_5=]\frac{2}{9},+\infty[\ .
+\end{eqnarray*}
+The overall strategy for solving the equation $F(p)=q$ is to 
+decompose the range of $F$ in its transitional and non-transitional sets, have 
+a bank of solved points with representatives more or less covering
+the non-trasitional sets, and to solve the system with the 
+bank of solved points as initial guesses.
+\end{em}
+\fim
+\end{exem}
+
+Similarly, with functions from the plane to the plane, 
+$F:\mathbb{R}^2\rightarrow \mathbb{R}^2$, satisfying certain
+technical regularity requirements, \cite{malta}, one defines the 
+critical curves, where the jacobian $JF$ is not invertible,
+\begin{eqnarray*}
+{\cal C}= \{p\in \mathbb{R}^2 \mid \det(JF|_q)=0\}\ ,
+\end{eqnarray*}
+and the image of ${\cal C}$, 
+${\cal T}=F({\cal C})=\{q=F(p), \text{ for all } p \in {\cal C}\}$, 
+the critical image, which defines the curves in the range of $F$ 
+delimiting
+regions where
+transitions on the number of pre-images may occur. 
+
+One of the drawbacks to the application of the theory presented in 
+\cite{malta} to problems coming from applications 
+that involve the solution of nonlinear $2\times 2$ systems of equations
+is not so much that it applies only to a collection of ``regular''
+functions, but that the functions have to be defined 
+in all points in the plane. In this case, 
+the theory then gives a fairly good amount
+of information on the solutions of the nonlinear system of equations.
+In applications usually, however,  the domain of a function has to
+satisfy some 
+restrictions due, for instance, to the lack of physical significance
+of certain values, or due to existence of singularities, 
+which breaks the theory presented in \cite{malta}, but preserves
+the overall methodology that they discuss. We 
+illustrate some aspects of this issue in the next example.
+\begin{exem}
+\begin{em}
+Let 
+$F(p)= -\frac{1}{p+1/2}\frac{1}{p-1/2}(p+\frac{1}{4})(p-\frac{1}{4})$,
+and consider the nonlinear equation $F(p)=q$ for given $q$. A simple
+examination of the graph of $ F$ shows that the number of solutions
+as a function of $q$ is
+\begin{eqnarray*}
+\eta(q) = \left\{ \begin{array}{lr} 
+2, & \text{if } q< -1 \\
+0, & \text{if } -1 \leq q < -1/4\\
+1, & \text{if } q=-1/4 \\
+2, & \text{if } q> -1/4
+\end{array}
+\right. \ .
+\end{eqnarray*}
+Again we have the range of $F$ partitioned in regions,
+\begin{eqnarray*}
+\text{non-transitional sets:}&& R_1=]-\infty,1[\ , R_4=]-1/4,+\infty[\ , 
+\\
+\text{transitional set:} &&T_3=\{-1/4 \} \ ,
+\\
+\text{mixed set:} && M_2=[-1,-1/4[ \ .
+\end{eqnarray*}
+
+The only critical point, $F'(p)=\frac{3p/8}{(p^2-1/4)^2}=0$, is 0,
+and the critical image $F(0)=-1/4$. This is a transitional set, 
+however, we are not able to determine the mixed set from this 
+calculation. 
+\end{em}
+\fim
+\end{exem}
 
 \subsection{A brief description for some features of the numerical inversion of functions from the plane to the plane}
 
 \section{Numerical Results}
 
-The methodology of numerical inversion of functions from the plane to the plane \cite{malta} was employed in this phase equilibrium calculation by \cite{ireme}. In this sense, all details regarding the production of the bank of solved points and the numerical steps of the inversion process are detailed by \cite{ireme}. Here, we will focuses on some aspects not addressed by \cite{ireme}, mainly with respect of the quantity of pre-images for some limit-situations (for instance, when we approached to the critical image). Furthermore, we will present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions.
+The methodology of numerical inversion of two-variable functions, adapted from \cite{malta} which considered the special case of function from the plane to the plane,
+ was employed in this phase equilibrium calculation by \cite{ireme}. In this sense, all details regarding the production of the bank of solved points and the numerical steps of the inversion process are detailed by \cite{ireme}. Here, we will focuses on some aspects not addressed by \cite{ireme}, mainly with regard
+ to the quantity of pre-images in  limit-situations (for instance, when we approached to the critical image). Furthermore, we will present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions.
  
 \subsection{Thermodynamic critical point calculations}
 
-In this subsection we presented the critical curve for the mixture ethane + limonene for the entire range of compositions. As reported previously, the term ``critical curve'' can exhibit two different meanings: the mathematical sense (points where the jacobian is singular) and the thermodynamic sense. In this subsection, we are dealing with thermodynamic critical points. Here, we used the approach of Heidemman and Khalil \cite{heidemman}, with a double-loop structure in temperature-molar volume, for the critical point calculation.
+In this subsection we present the critical curve for the mixture ethane + limonene for the entire range of compositions. As reported previously, the term ``critical curve'' can exhibit two different meanings: the mathematical sense (points where the jacobian is 
+singular) and the thermodynamic sense. Here we  deal
+ with thermodynamic critical points, and  we use the approach of Heidemman and Khalil \cite{heidemman}, with a double-loop structure in temperature-molar volume, for the critical point calculation.
 
-Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observed a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}.
+Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}.
 
 \begin{figure}
 	\begin{center}
@@ -156,11 +280,11 @@ Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperat
 
 \subsection{Results at $T$ = 307.4 K and $y_1 = 0.998966$}
 
-\subsubsection{A close examination on the critical curves}
+\subsubsection{An in-depth examination of the critical curves}
 
-As pointed previously, the initial results regarding the application of the numerical inversion of functions to the prediction of double retrograde behaviour was presented by \cite{ireme}. In this work, \cite{ireme} studied some initial features of the critical curves. Here, we presented a more deeper analysis of the critical curves in this system.
+As pointed out previously, the initial results regarding the application of the numerical inversion of functions to the prediction of double retrograde behavior was presented by \cite{ireme}. In that work they investigated some basic features of the critical curves. Here, we present a deeper analysis of the critical curves in this system.
 
-Clearly, we can note that -- in the highlighted region -- the critical curves exhibit one auto-intersection, as represented in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a ``quasi-tangent'' point (or a meeting point).
+Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as represented in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a ``quasi-tangent'' point (or a meeting point).
 
 \begin{figure}
 	\begin{center}
