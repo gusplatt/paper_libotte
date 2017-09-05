@@ -1,0 +1,119 @@
+\providecommand{\latin}[1]{#1}
+\makeatletter
+\providecommand{\doi}
+  {\begingroup\let\do\@makeother\dospecials
+  \catcode`\{=1 \catcode`\}=2 \doi@aux}
+\providecommand{\doi@aux}[1]{\endgroup\texttt{#1}}
+\makeatother
+\providecommand*\mcitethebibliography{\thebibliography}
+\csname @ifundefined\endcsname{endmcitethebibliography}
+  {\let\endmcitethebibliography\endthebibliography}{}
+\begin{mcitethebibliography}{12}
+\providecommand*\natexlab[1]{#1}
+\providecommand*\mciteSetBstSublistMode[1]{}
+\providecommand*\mciteSetBstMaxWidthForm[2]{}
+\providecommand*\mciteBstWouldAddEndPuncttrue
+  {\def\EndOfBibitem{\unskip.}}
+\providecommand*\mciteBstWouldAddEndPunctfalse
+  {\let\EndOfBibitem\relax}
+\providecommand*\mciteSetBstMidEndSepPunct[3]{}
+\providecommand*\mciteSetBstSublistLabelBeginEnd[3]{}
+\providecommand*\EndOfBibitem{}
+\mciteSetBstSublistMode{f}
+\mciteSetBstMaxWidthForm{subitem}{(\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd
+  {\mcitemaxwidthsubitemform\space}
+  {\relax}
+  {\relax}
+
+\bibitem[Chen \latin{et~al.}(1974)Chen, Chappelear, and Kobayashi]{chen_1}
+Chen,~R. J.~J.; Chappelear,~P.~S.; Kobayashi,~R. Dew point loci for
+  methane-n-butane binary system. \emph{J. Chem. Eng. Data} \textbf{1974},
+  \emph{19}, 53--58\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Chen \latin{et~al.}(1974)Chen, Chappelear, and Kobayashi]{chen_2}
+Chen,~R. J.~J.; Chappelear,~P.~S.; Kobayashi,~R. Dew point loci for
+  methane-n-pentane binary system. \emph{J. Chem. Eng. Data} \textbf{1974},
+  \emph{19}, 59--61\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Raeissi and Peters(2001)Raeissi, and Peters]{raeissi_1}
+Raeissi,~S.; Peters,~C.~J. On the phenomena of double retrograde vaporization:
+  multi dew point behavior in the binary system ethane + limonene. \emph{Fluid
+  Phase Equilib.} \textbf{2001}, \emph{191}, 33--40\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Raeissi and Peters(2001)Raeissi, and Peters]{raeissi_2}
+Raeissi,~S.; Peters,~C.~J. Simulation of double retrograde vaporization using
+  the Peng-Robinson equation of state. \emph{J. Chem. Thermodyn.}
+  \textbf{2001}, \emph{35}, 573--581\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Peng and Robinson(1976)Peng, and Robinson]{peng_robinson}
+Peng,~D.; Robinson,~D. A new two-constant equation of state. \emph{Ind. Eng.
+  Chem. Res.} \textbf{1976}, \emph{15}, 59--64\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Platt \latin{et~al.}(2012)Platt, Bastos, and Domingos]{jnsa}
+Platt,~G.~M.; Bastos,~I.~N.; Domingos,~R.~P. Calculation of double retrograde
+  vaporization: Newton's methods and Hyperheuristic approach. \emph{J. Nonlin.
+  Sys. Appl.} \textbf{2012}, \emph{3}, 107--120\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Malta \latin{et~al.}(1996)Malta, Saldanha, and Tomei]{malta}
+Malta,~I.~P.; Saldanha,~N.~C.; Tomei,~C. The Numerical Inversion of Functions
+  from the Plane to the Plane. \emph{Math. Comput.} \textbf{1996}, \emph{65},
+  1531--1552\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Guedes \latin{et~al.}(2015)Guedes, {Moura Neto}, and Platt]{canadian}
+Guedes,~A.~L.; {Moura Neto},~F.~D.; Platt,~G.~M. Prediction of Azeotropic
+  Behaviour by the Inversion of Functions from the Plane to the Plane.
+  \emph{Can. J. Chem. Eng.} \textbf{2015}, \emph{93}, 914--928\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Libotte \latin{et~al.}(2016)Libotte, {Moura Neto}, Guedes, and
+  Platt]{ireme}
+Libotte,~G.~B.; {Moura Neto},~F.~D.; Guedes,~A.~L.; Platt,~G.~M. Robust
+  Prediction of Double Retrograde Vaporization by Numerical Inversion of
+  Functions. \emph{International Review of Mechanical Engineering (Testo
+  Stampato)} \textbf{2016}, \emph{10}, 452--460\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Heidemman and Khalil(1980)Heidemman, and Khalil]{heidemman}
+Heidemman,~R.~A.; Khalil,~A.~M. The calculation of critical points. \emph{AIChE
+  J.} \textbf{1980}, \emph{26}, 769--779\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{Van Konynenburg} and Scott(1980){Van Konynenburg}, and
+  Scott]{classif}
+{Van Konynenburg},~P.~H.; Scott,~R.~L. Critical lines and phase equilibria in
+  binary van der Waals mixtures. \emph{Phylosophical Transactions of The Royal
+  Society of London A: Mathematical, Physical and Engineering Sciences}
+  \textbf{1980}, \emph{298}, 495--540\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}
