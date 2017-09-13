@@ -19,6 +19,7 @@
 \usepackage{amsmath, amsthm, amsfonts}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{csquotes}
 % Theorems
 %-----------------------------------------------------------------
 \newtheorem{thm}{Theorem}[section]
@@ -135,7 +136,7 @@
 \begin{tocentry}
 
 Some journals require a graphical entry for the Table of Contents.
-This should be laid out ``print ready'' so that the sizing of the
+This should be laid out \enquote{print ready} so that the sizing of the
 text is correct.
 
 Inside the \texttt{tocentry} environment, the font used is Helvetica
@@ -174,54 +175,24 @@ separate page at the end of the document.
 %% Start the main part of the manuscript here.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-The double retrograde vaporization phenomenon corresponds to a special shape of the dew-point curve, exhibiting a ``S'' shape (with three dew points) or a double-dome structure (with four dew points). This phenomenon was firstly investigated by \citet{chen_1} and \citet{chen_2} for binary mixtures involving methane + n-butane and methane + n-pentane, under specified temperature. More recently, \citet{raeissi_1} identified a double-dome behavior for the binary mixture ethane + limonene at $T = 307.4$ K and in a narrow range of compositions (close to the pure ethane). Furthermore, \citet{raeissi_2} indicated that the Peng-Robinson equation of state \citep{peng_robinson}, with classical mixing rules, was capable to qualitatively predict this phenomenon.
 
-In the vicinity of the mixture critical point, the robust calculation of dew point pressures (under specified temperature) is a very hard task. Furthermore, some roots of the phase equilibrium problem show very small radius of convergence for Newton-type methods, as indicated by \citet{jnsa}. For this reason, the development of robust frameworks for this kind of problem is extremely relevant. Among several possibilities, we foccus on the robust methodology of the numerical inversion of functions, proposed by \citet{malta}, for functions from
+Double retrograde vaporization is a phase behavior phenomenon that occurs close to the critical point of binary mixtures, that is, the point where there are no phase boundaries and therefore the distinction between them does not exist, causing the mixture to cease to exist as well. It occurs in mixtures characterized by containing a solvent with high volatility relative to the solute contained in the mixture. More specifically in relation to the mixture to be studied, composed of ethane + limonene, the solvent boils at 184.6 K, while the boiling point of the solute is 448.2 K. This tendency towards evaporation of ethane in relation to limonene causes its volatility to be high, satisfying one of the conditions of occurrence.
+
+The phenomenon corresponds to a special shape of the dew-point curve, exhibiting a \enquote{S} shape (with three dew points) or a double-dome structure (with four dew points), for a specific temperature and composition of the system. Especially in the case of double-dome manifestation, the phenomenon occurs within a very limited temperature range, which is slightly above to the critical temperature of the more volatile component. We must mention that the composition of vapor phase is arbitrarily chosen, in order to produce the thermodynamic phenomenon.
+
+Its occurrence was firstly investigated by \citet{chen_1} and \citet{chen_2} for binary mixtures involving methane + n-butane and methane + n-pentane, under specified temperature. More recently, \citet{raeissi_1} identified a double-dome behavior for the binary mixture ethane + limonene at $T = 307.4$ K and in a narrow range of compositions (close to the pure ethane). Furthermore, \citet{raeissi_2} indicated that the Peng-Robinson equation of state \citep{peng_robinson}, with classical mixing rules, was capable to qualitatively predict this phenomenon. In order to detail the thermodynamic fundamentals of double retrograde vaporization, \citet{raeissi2004thermodynamic} also presented a detailed discussion of the volumetric properties of the fluids involved as defining the existence of the phenomenon.
+
+In the vicinity of the mixture critical point, the robust calculation of dew point pressures (under specified temperature) is a very hard task. Furthermore, some roots of the phase equilibrium problem show very small radius of convergence for Newton-type methods, as indicated by \citet{jnsa}. For this reason, the development of robust frameworks for this kind of problem is extremely relevant. Among several possibilities, we focus on the robust methodology of the numerical inversion of functions, proposed by \citet{malta}, for functions from
 the plane to the plane. This technique \citep{malta} proposes --- considering a restrict set of functions --- the generation of the critical curves in the mathematical 
-sense\footnote{The term ``critical''  assumes two meanings in this work: in the mathematical sense, a critical point of a function
+sense\footnote{The term \enquote{critical}  assumes two meanings in this work: in the mathematical sense, a critical point of a function
  is a nonregular point (where the jacobian matrix is non-invertible); in the thermodynamic sense, the critical point is that where we cannot distinguish between the properties of the phases.}, the construction of a bank of solved points (to be used as 
  with good initial estimates for the solution) and, finally, the inversion of the desired points (calculation of all pre-images of a such image).
+ 
+As far as we can know, the first application of the methodology  of numerical inversion of two-variable functions in a chemical engineering problem was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes. More recenlty, \citet{ireme} presented some initial results regarding the application of the methodology proposed by \citet{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene. 
 
-As far as we can know, the first application of the methodology  of numerical inversion of two-variable functions in a chemical engineering problem was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes.
+However, a few relevant aspects were not considered there and we discuss them in this work. Among these aspects, we can briefly mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). Furthermore, one of the objectives of this work is to provide a mathematical view of this challenging nonlinear algebraic system, which can be useful in the development of numerical tools for solving high-pressure phase equilibrium problems. As pointed previously, the solution of this kind of nonlinear system with typical root-finding algorithms (such as Newton's methods) is not a trivial task, even when using more sophisticated numerical tools \cite{jnsa}.
 
-More recenlty, \citet{ireme} presented some initial results regarding the application of the methodology proposed by \citet{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene. However, a few relevant aspects were not considered there and we discuss them in this work. Among these aspects, we mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). Furthermore, one of the objectives of this work is to provide a mathematical view of this challenging nonlinear algebraic system, which can be useful in the development of numerical tools for solving high-pressure phase equilibrium problems. As pointed previously, the solution of this kind of nonlinear system with typical root-finding algorithms (such as Newton's methods) is not a trivial task, even when using more sophisticated numerical tools \cite{jnsa}.
-
-Table \ref{tab:roots_double_dome} presents the compositions and pressures for the dew point calculation in the system ethane + limonene at $T = 307.4$ K and $y_1 = 0.998966$, where the ``double-dome'' structure appears, with four dew point pressures (and compositions of the liquid phase). We note, considering the data presented in Table \ref{tab:roots_double_dome}, that one root corresponds to a low pressure root (Root 1) and the othersare high pressure roots (which are close to each other). From the point of view of the calculation techniques -- using classical numerical methods, such as Newton-Raphson methods -- we are interested in robust methodologies capable to find all roots, but mainly with some features to find in a robust way the high pressure roots.
-
-We must mention that the composition of vapor phase is arbitrarily chosen, in order to produce the thermodynamic phenomenon.
-
-\begin{table}[http!]
-	\begin{center}
-	\begin{tabular}{ccc} \hline \small
-Root & $x_1$ & $P$ (kPa) \\
-\hline
-1 & 0.1567 & 619.26 \\
-2 & 0.9829 & 4859.46 \\
-3 & 0.9918 & 4931.22 \\
-4 & 0.9979 & 5007.25 \\
-	\hline
-	\end{tabular}
-	\caption{ {\small Dew point compositions and pressures for $T = 307.4$ K and $y_1 = 0.998966$. (Case 1)}}\label{tab:roots_double_dome}
-	\end{center}
-\end{table}
-
-We will use the same numbering to the roots (1, 2, 3 and 4) even for some modified nonlinear problems (without physical significance).
-
-We also tested the dew point calculation at $T = 304.5$ K and $y_1 = 0.99945$, where a ``S'' shape dew curve appears, with three physical roots. The roots are detached in Table \ref{tab:roots_S}.
-
-\begin{table}[http!]
-	\begin{center}
-	\begin{tabular}{ccc} \hline \small
-Root & $x_1$ & $P$ (kPa) \\
-\hline
-1 & 0.3064 & 1209.36 \\
-2 & 0.8442 & 3900.98 \\
-3 & 0.9917 & 4671.36 \\
-	\hline
-	\end{tabular}
-	\caption{ {\small Dew point compositions and pressures for $T = 304.5$ K and $y_1 = 0.99945$ (Case 2).}}\label{tab:roots_S}
-	\end{center}
-\end{table}
+In order to analyze these main points and provide an in-depth study (in the mathematical sense) of the phase equilibrium problem in two-component systems, the work was divided predominantly into two parts: first, the system composed of ethane + limonene at $ T = 307.4 $ K was analyzed, fixing the molar fraction of the vapor phase of ethane at $ y_{1} = 0.998966 $. Under these conditions, the system presents four distinct solutions, that is, the number of times the dew point curve is intercepted, for the chosen mole fraction, as can be seen in Figure \ref{fig:dew_point_curve}. For this system, all the steps of the method of inversion of functions from the plane to the plane were performed and the solution degeneration was investigated by obtaining pre-images of a set of points located in the vicinity of the critical image. We also evaluated the critical points (in mathematical terms) that are folds and cusps, and their relation with the degeneration of solutions of this problem.
 
 \begin{figure}
 	\begin{center}
@@ -230,11 +201,15 @@ Root & $x_1$ & $P$ (kPa) \\
 	\end{center}
 \end{figure}
 
+Then, the temperature of the system composed of the same components of the previous case was defined as $ T = 304.5 $ K and analyzed together with the same system at T = 280 K. In these two conditions, when $ y1 = 0.99945 $ (among other conditions), the systems have three and one solutions, respectively, as shown in Figure \ref{fig:dew_point_curve}. Thus, it was possible to evaluate the degeneracy of solutions in both systems, varying only one of the parameters of the problem.
+
+The possibility of solving the problem - and therefore obtaining the pre-images of a given point in the image - was also evaluated from a mathematical perspective: the critical curves (in the mathematical sense) of the system were obtained for different temperatures and their respective critical images . Through this variation, for a fixed molar fraction of ethane in the vapor phase, it was possible to verify the influence of the critical curves in obtaining the solutions of the problem through methods that use derivatives.
+
 \section{Models and Methodology}
 
 \subsection{Thermodynamic models and problem formulation}
 
-All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), will be conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in\citet{ireme}.
+All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), will be conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in \citet{ireme}.
 
 For a binary mixture, the phase equilibrium problem can be formulated as:
 \begin{eqnarray}
@@ -323,7 +298,7 @@ transitions on the number of pre-images may occur.
 One of the drawbacks to the application of the theory presented in 
 \citet{malta} to problems coming from applications 
 that involve the solution of nonlinear $2\times 2$ systems of equations
-is not so much that it applies only to a collection of ``regular''
+is not so much that it applies only to a collection of \enquote{regular}
 functions, but that the functions have to be defined 
 in all points in the plane. In this case, 
 the theory then gives a fairly good amount
@@ -377,9 +352,44 @@ The methodology of numerical inversion of two-variable functions, adapted from \
  was employed in this phase equilibrium calculation by \citet{ireme}. In this sense, all details regarding the production of the bank of solved points and the numerical steps of the inversion process are detailed by \citet{ireme}. Here, we will focuses on some aspects not addressed by \citet{ireme}, mainly with regard
  to the quantity of pre-images in  limit-situations (for instance, when we approached to the critical image). Furthermore, we will present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions.
  
+Table \ref{tab:roots_double_dome} presents the compositions and pressures for the dew point calculation in the system ethane + limonene at $T = 307.4$ K and $y_1 = 0.998966$, where the \enquote{double-dome} structure appears, with four dew point pressures (and compositions of the liquid phase). We note, considering the data presented in Table \ref{tab:roots_double_dome}, that one root corresponds to a low pressure root (Root 1) and the others are high pressure roots (which are close to each other). From the point of view of the calculation techniques -- using classical numerical methods, such as Newton-Raphson methods -- we are interested in robust methodologies capable to find all roots, but mainly with some features to find in a robust way the high pressure roots.
+
+\begin{table}
+  \caption{Dew point compositions and pressures for $T = 307.4$ K and $y_1 = 0.998966$. (Case 1)}
+  \label{tab:roots_double_dome}
+  \begin{tabular}{lll}
+  \hline
+    Root & $ x_{1} $ & $ P \left( kPa \right) $ \\
+    \hline
+    1 & 0.1567 & 619.2575 \\
+    2 & 0.9829 & 4859.4621 \\
+    3 & 0.9918 & 4931.2247 \\
+    4 & 0.9979 & 5007.2503 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+We will use the same numbering to the roots (1, 2, 3 and 4) even for some modified nonlinear problems (without physical significance).
+
+We also tested the dew point calculation at $T = 304.5$ K and $y_1 = 0.99945$, where a \enquote{S} shape dew curve appears, with three physical roots. The roots are detached in Table \ref{tab:roots_S}.
+
+\begin{table}[http!]
+	\begin{center}
+	\begin{tabular}{ccc} \hline \small
+Root & $x_1$ & $P$ (kPa) \\
+\hline
+1 & 0.3064 & 1209.3572 \\
+2 & 0.8442 & 3900.9812 \\
+3 & 0.9917 & 4671.3568 \\
+	\hline
+	\end{tabular}
+	\caption{ {\small Dew point compositions and pressures for $T = 304.5$ K and $y_1 = 0.99945$ (Case 2).}}\label{tab:roots_S}
+	\end{center}
+\end{table}
+ 
 \subsection{Thermodynamic critical point calculations}
 
-In this subsection we present the critical curve for the mixture ethane + limonene for the entire range of compositions. As reported previously, the term ``critical curve'' can exhibit two different meanings: the mathematical sense (points where the jacobian is 
+In this subsection we present the critical curve for the mixture ethane + limonene for the entire range of compositions. As reported previously, the term \enquote{critical curve} can exhibit two different meanings: the mathematical sense (points where the jacobian is 
 singular) and the thermodynamic sense. Here we deal
  with thermodynamic critical points, and we use the approach of Heidemman and Khalil \citep{heidemman}, with a double-loop structure in temperature-molar volume, for the critical point calculation.
 
@@ -398,7 +408,7 @@ Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperat
 
 As pointed out previously, the initial results regarding the application of the numerical inversion of functions to the prediction of double retrograde behavior was presented by \citep{ireme}. In that work they investigated some basic features of the critical curves. Here, we present a deeper analysis of the critical curves in this system.
 
-Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as represented in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a ``quasi-tangent'' point (or a meeting point).
+Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as represented in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a \enquote{quasi-tangent} point (or a meeting point).
 
 \begin{figure}
 	\begin{center}
@@ -407,7 +417,7 @@ Clearly, we note that --- in the highlighted region --- the critical curves exhi
 	\end{center}
 \end{figure}
  
-An amplification of the region in the neighborhood of the ``quasi-tangent'' point, using a color pattern (in order to clarify the relationship between domain and image) is presented in Figure \ref{fig:domain_image}.
+An amplification of the region in the neighborhood of the \enquote{quasi-tangent} point, using a color pattern (in order to clarify the relationship between domain and image) is presented in Figure \ref{fig:domain_image}.
 
 \begin{figure}
 \centering
@@ -463,27 +473,27 @@ Figures \ref{fig:points_domain_1} and \ref{fig:points_domain_2} contain the sequ
 	\end{center}
 \end{figure}
 
-The inversion process will be detailed for the point close to the critical image. Figure \ref{fig:L_path_image} indicates the ``L'' path in the image. Again, the square is a point in the bank of solved points and the desired point is represented by a circle.
+The inversion process will be detailed for the point close to the critical image. Figure \ref{fig:L_path_image} indicates the \enquote{L} path in the image. Again, the square is a point in the bank of solved points and the desired point is represented by a circle.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{caminho_L_degeneracao_imagem_new.pdf}
-		\caption{The ``L'' path in the image.}\label{fig:L_path_image}
+		\caption{The \enquote{L} path in the image.}\label{fig:L_path_image}
 	\end{center}
 \end{figure}
 
-The paths in the domain are detached in Figure \ref{fig:L_path_domain}. We can note that the ``L'' paths were deformed and are virtually straight lines. Once again, the degeneration process is clearly indicated and the critical curve has a fold at this point.
+The paths in the domain are detached in Figure \ref{fig:L_path_domain}. We can note that the \enquote{L} paths were deformed and are virtually straight lines. Once again, the degeneration process is clearly indicated and the critical curve has a fold at this point.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio_new.pdf}
-		\caption{The ``L'' path in the domain, Roots 3 and 4.}\label{fig:L_path_domain}
+		\caption{The \enquote{L} path in the domain, Roots 3 and 4.}\label{fig:L_path_domain}
 	\end{center}
 \end{figure}
 
 \subsection{Results at $T$ = 304.5 K and $y_1 = 0.99945$}
 
-At $T = 304.5$ K and $y_1 = 0.99945$, the dew point curve still exhibits a double retrograde behavior, but now as a ``S'' shape (instead of a double dome). In this situation, we observed three dew point pressures (and liquid compositions) for a narrow range of molar fractions.
+At $T = 304.5$ K and $y_1 = 0.99945$, the dew point curve still exhibits a double retrograde behavior, but now as a \enquote{S} shape (instead of a double dome). In this situation, we observed three dew point pressures (and liquid compositions) for a narrow range of molar fractions.
 
 Figure \ref{fig:imagem_S} shows the path of the inversion processes, beginning at $q = (0,0)$ and approaching to the critical image.
 
@@ -505,12 +515,12 @@ The movement of the pre-images obtained in the inversion process is illustrated 
 	\end{center}
 \end{figure}
 
-Finally, Figure \ref{fig:L_S} illustrates the ``L'' path of the inversion process in domain for the last point (marked in blue in the two previous figures). Again, we can note the two pre-images corresponding to the Roots 2 and 3 tend to degenerate to a unique pre-image.
+Finally, Figure \ref{fig:L_S} illustrates the \enquote{L} path of the inversion process in domain for the last point (marked in blue in the two previous figures). Again, we can note the two pre-images corresponding to the Roots 2 and 3 tend to degenerate to a unique pre-image.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio2.pdf}
-		\caption{The ``L'' path in the domain, Roots 2 and 3, for $T$ = 304.5 K and $y_1 = 0.99945$.}\label{fig:L_S}
+		\caption{The \enquote{L} path in the domain, Roots 2 and 3, for $T$ = 304.5 K and $y_1 = 0.99945$.}\label{fig:L_S}
 	\end{center}
 \end{figure}
 
@@ -519,7 +529,7 @@ Finally, Figure \ref{fig:L_S} illustrates the ``L'' path of the inversion proces
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio3.pdf}
-		\caption{The ``L'' path in the domain, Root 1, for $T$ = 280.0 K and $y_1 = 0.99945$.}\label{fig:L_S}
+		\caption{The \enquote{L} path in the domain, Root 1, for $T$ = 280.0 K and $y_1 = 0.99945$.}\label{fig:L_S2}
 	\end{center}
 \end{figure}
 
@@ -538,8 +548,8 @@ The last feature to be approached in this work corresponds to the influence of t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgement}
 
-Please use ``The authors thank \ldots'' rather than ``The
-authors would like to thank \ldots''.
+Please use \enquote{The authors thank \ldots} rather than \enquote{The
+authors would like to thank \ldots}.
 
 The author thanks Mats Dahlgren for version one of \textsf{achemso},
 and Donald Arseneau for the code taken from \textsf{cite} to move
