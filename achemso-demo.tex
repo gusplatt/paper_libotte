@@ -282,7 +282,7 @@ bank of solved points as initial guesses.
 \end{exem}
 
 Similarly, with functions from the plane to the plane, 
-$F:\mathbb{R}^2\rightarrow \mathbb{R}^2$, satisfying certain
+$F:\mathbb{R}^2\to \mathbb{R}^2$, satisfying certain
 technical regularity requirements, \cite{malta}, one defines the 
 critical curves, where the jacobian $JF$ is not invertible,
 \begin{eqnarray*}
@@ -345,6 +345,49 @@ calculation.
 
 \subsection{A brief description for some features of the numerical inversion of functions from the plane to the plane}
 
+Next, the method of inversion of functions from the plane to the plane will be presented, as well as the main definitions that support the technique. A detailed description of the method can be found in \citet{malta}.
+
+The method is intended to solve systems with two equations and two unknowns of type $ F\left(p\right) = q $ with $ p, q \in \text{I\!R}^2 $ and $ F $ should be a smooth function. In this context, the jacobian of F at a given point $ p = \left(x,\;y\right) $ is given by
+%
+\[ J \left(p\right) = \begin{pmatrix}
+\dfrac{\partial f_1}{\partial x} & \dfrac{\partial f_1}{\partial y} \vspace{0.5em} \\
+\dfrac{\partial f_2}{\partial x} & \dfrac{\partial f_2}{\partial y}
+\end{pmatrix} \; . \]
+
+\noindent Therefore, a point $ p $ in the domain is defined as regular if $ J\left(p\right) $ is invertible, which is equivalent to the fact that $ det\left(J\left(p\right)\right) \neq 0 $. On the other hand, if the jacobian matrix is not invertible, $ p $ is a critical point.
+
+In dealing specifically with critical points, there are two cases that will be taken into account in this work: folds and cusps. Before addressing each of them, it is important to introduce that a point in the image of $ F $ is called a regular value if all of its pre-images are regular points, as previously defined. Its complement in the plane is the image of the set $ C $ -- formed by the critical points -- given by $ F\left(C\right) $ and called critical image. From the definition of critical point, it is known that the gradient of the determinant of the Jacobian matrix of F is never equals to zero at such a point. In other words, zero is a regular value of the determinant of the jacobian matrix. Therefore, a fold is defined by:
+%
+\begin{itemize}
+\item $ grad\left(det\left(J\left(p\right)\right)\right) \neq 0 $;
+\item the kernel $ K $ of the jacobian and the tangent line $ T $ to the critical set in $ p $ do not coincide.
+\end{itemize}
+
+\noindent Under such conditions, the jacobian matrix will never consist only of zeros. Therefore, this matrix has rank equals to one in $ p $ and there is a nonzero vector that is tangent to the critical curve.
+
+In cases where the kernel $ K $ and the line $ T $ tangent to the critical set coincide, there is a cusp-like critical point. In general, the cusps are defined by:
+%
+\begin{itemize}
+\item $ grad\left(det\left(J\left(p\right)\right)\right) \neq 0 $;
+\item the kernel $ K $ of the jacobian and the tangent line $ T $ to the critical set in $ p $ coincide;
+\item for a smooth parametrization $ \gamma : \left( -\epsilon, \; \epsilon \right) \to \text{I\!R}^2 $ of $ C $ near $ p $, with $ \gamma \left(0\right) = p $ and $ \gamma^{\prime} \left(0\right) \neq 0 $, the angle $ \theta\left(\gamma\left(t\right)\right) $ between the kernel $ K\left(\gamma\left(t\right)\right) $ of $ J\left(\gamma\left(t\right)\right) $ and the tangent line $ T\left(\gamma\left(t\right)\right) $ to $ C $ satisfies $ \theta^{\prime}\left(0\right) \neq 0 $.
+\end{itemize}
+
+Within the scope of the functions from the plane to the plane, we must introduce two descriptions of very important type of functions. A smooth proper function from the plane into itself is excellent if every critical point of $ F $ is a fold or a cusp. In turn, a continuous function from the plane to the plane is proper if the pre-image of any compact subset is also a compact set. Explicitly, this is equivalent to $\lim_{\vert\left(x,\;y\right)\vert\to\infty} \vert F\left(x,\;y\right)\vert = \infty$. In essence, the algorithm was constructed to solve the $ 2\times2 $ nonlinear system of algebraic equations $ F\left(p\right) = q $, when $ F:\text{I\!R}^2 \to \text{I\!R}^2 $ is a nice function. Let $ F $ be an excellent and proper function. It is nice if its critical set $ C $ is limited and the critical image $ F\left(C\right) $ consists of a normal family of curves. $ F\left(\gamma\right) $  is a normal curve when there are no points with more than two pre-images in $ \gamma $ and, at points of self-intersection, the vectors tangent to $ F\left(\gamma\right) $ are linearly independent.
+
+Faced with this fact, one of the difficulties is to apply the method of inversion of functions from te plane to the plane in engineering problems. The complexity in parameterizing functions that describe this type of problem and checking the properties and theorems that underlie the method are some of the difficulties. At the outset, the task of verifying whether the functions describing the mathematical model of a particular engineering problem is nice can be complex. However, an essential feature of the class of nice functions is that, under a suitable topology, they are generic. That means it is an open, dense set. From a simplified point of view, these properties express that close enough to a nice function, all functions are also nice, and there is always a nice function that approximates another function. In general, since a nice function can be approximated by another function of the same type, the analysis can be restricted to this type of function.
+
+The method of inversion of functions from the plane to the plane is composed of three fundamental steps: obtaining the critical set of $ F $, creating the bank of solved points and calculating the pre-images from an arbitrary point. Each of these steps will be described below.
+
+\subsubsection{Generation of the critical set}
+
+Knowing the critical set is fundamental in the inversion process, since it provides a particular understanding of the behavior of the function. In addition to tracing the regions where the continuation method does not face points of singularity in the inversion process, it also indicates regions composed of different tiles, which is a primordial concept in the analysis of solution degeneration. Given a closed set $ X \subset \text{I\!R}^2 $, we call the connected components of $ \text{I\!R}^2 \setminus X $ the tiles for $ X $.
+
+In the original procedure, \citet{malta} proposes various calculations and verifications in order to establish that, strictly speaking, the critical points obtained form the critical set as a whole. In addition, the computational routine still sorts the critical points and locates points of intersection of the curves in the image. Due to the difficulties mentioned above regarding the application of the technique to solve real engineering problems, some adaptations were made to the original method, so that it could be simplified without affecting its main attributes.
+
+Initially, the problem domain is fully mapped. An equally spaced rectangular mesh is constructed in the domain of the problem and the value of the determinant of the jacobian matrix at each point is calculated. Since the critical points are those in which the determinant of the Jacobian is null, the mesh is traversed, and each time inversions are identified in the signal of the determinant value, an arbitrary value of the segment between the two points with distinct signals is taken as initial guess of the root calculation contained in that interval. Therefore, a Newton-type routine is executed until the critical point of the mapped segment is obtained.
+
+The previous procedure is executed until all the mesh is traversed, that is, until all the critical points of the domain are obtained, forming the critical set. In addition, the mesh must be sufficiently refined so that the critical curves can describe the boundaries among the tiles with the desired accuracy. After obtaining the set $ C $ of critical curves, the set of critical images $F\left(C\right) $ follows by calculating the value of the function of each of the critical points contained in $ C $.
 
 \section{Numerical Results}
 
@@ -536,7 +579,25 @@ Finally, Figure \ref{fig:L_S} illustrates the \enquote{L} path of the inversion 
 
 \subsection{The influence of the temperature in the critical curve}
 
-The last feature to be approached in this work corresponds to the influence of the system temperature (specified) in the critical curve. Obviously, the DRV phenomenon is a function of the temperature. 
+The last feature to be approached in this work corresponds to the influence of the system temperature (specified) in the critical curve. Obviously, the DRV phenomenon is a function of the temperature.
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.95\columnwidth]{variacao_temperatura.pdf}
+  \caption{Critical images for different temperatures}
+  \label{fig:critical_images_temeprature_variation}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.95\columnwidth]{variacao_temperatura_ponto_bolha.pdf}
+  \caption{Bubble point curves for different temperatures}
+  \label{fig:bubble_curves_temeprature_variation}
+\end{subfigure}
+\caption{Influence of system temperature variation on critical images of the problem. The molar fraction of the vapor phase of ethane is set at $ y_1 = 0.99966 $ for all cases, as shown in the dashed line.}
+\label{fig:domain_image}
+\end{figure}
 
 \section{Conclusions}
 
