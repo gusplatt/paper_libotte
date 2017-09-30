@@ -173,25 +173,24 @@ separate page at the end of the document.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Double retrograde vaporization is a phase behavior phenomenon that occurs close to the critical point of binary mixtures, that is, the point where there are no phase boundaries and therefore the distinction between them does not exist, causing the mixture to cease to exist as well. It occurs in mixtures characterized by containing a solvent with high volatility relative to the solute contained in the mixture. More specifically in relation to the mixture to be studied, composed of ethane + limonene, the solvent boils at 184.6 K, while the boiling point of the solute is 448.2 K. This tendency towards evaporation of ethane in relation to limonene causes its volatility to be high, satisfying one of the conditions of occurrence.
+Double retrograde vaporization is a phase behavior phenomenon that occurs close to the critical point of binary mixtures, that is, the point where there are no phase boundaries and therefore the distinction between them does not exist, causing the mixture to cease to exist as well. It occurs in mixtures characterized by involving a solvent with high volatility relative to the solute contained in the mixture. More specifically in relation to the mixture to be studied, composed of ethane + limonene, the solvent boils at 184.6 K, while the boiling point of the solute is 448.2 K. This tendency towards evaporation of ethane in relation to limonene causes its volatility to be high, satisfying one of the conditions of occurrence.
 
 The phenomenon corresponds to a special shape of the dew-point curve, exhibiting a \enquote{S} shape (with three dew points) or a double-dome structure (with four dew points), for specific system temperature and composition. Especially in the case of double-dome manifestation, the phenomenon occurs within a very limited temperature range, which is slightly above to the critical temperature of the more volatile component. We must mention that the composition of vapor phase is arbitrarily chosen, in order to produce the thermodynamic phenomenon.
 
 Its occurrence was firstly investigated by \citet{chen_1} and \citet{chen_2} for binary mixtures involving methane + n-butane and methane + n-pentane, under specified temperature. More recently, \citet{raeissi_1} identified a double-dome behavior for the binary mixture ethane + limonene at $T = 307.4$ K and in a narrow range of compositions (close to the pure ethane). Furthermore, \citet{raeissi_2} indicated that the Peng-Robinson equation of state \citep{peng_robinson}, with classical mixing rules, was capable to qualitatively predict this phenomenon. In order to detail the thermodynamic fundamentals of double retrograde vaporization, \citet{raeissi2004thermodynamic} also presented a detailed discussion of the volumetric properties of the fluids involved as defining the existence of the phenomenon.
 
 In the vicinity of the mixture critical point, the robust calculation of dew point pressures (under specified temperature) is a very hard task. Furthermore, some roots of the phase equilibrium problem show very small radius of convergence for Newton-type methods, as indicated by \citet{jnsa}. For this reason, the development of robust frameworks for this type of problem is extremely relevant. Among several possibilities, we focus on the robust methodology of the numerical inversion of functions, proposed by \citet{malta}, 
-where they develloped an extensive theory to handle functions
+where they developed an extensive theory to handle functions
 in a generic class of functions
 defined in the whole plane to the plane. 
 Their theory give precise statements about the 
 solution of 2 by 2 systems of nonlinear equations, when 
 the function is defined everywhere in the plane. 
 From their theory we select a few techniques which
-are applicable to our thermodynamic problem, namely the
-This technique \citep{malta} proposes --- considering a 
+are applicable to our thermodynamic problem, namely, this technique \citep{malta} proposes --- considering a 
 generic class of functions --- the computation of
  critical curves in the mathematical 
-sense\footnote{The term \enquote{critical}  assumes two meanings in this work: in the mathematical sense, a critical point of a function
+sense\footnote{The term \enquote{critical} assumes two meanings in this work: in the mathematical sense, a critical point of a function
  is a nonregular point (where the Jacobian matrix is 
  non-invertible); in the thermodynamic sense, the 
  critical point is that where we cannot distinguish 
@@ -203,19 +202,9 @@ sense\footnote{The term \enquote{critical}  assumes two meanings in this work: i
  of the desired point (calculation of all pre-images of a such 
  image).
  
-As far as we know, the first application of these
-techniques of the general methodology  of numerical inversion of functions from the plane to the plane, adapting
-them to handle 
- a chemical engineering problem was presented by 
- \citet{canadian}, in the prediction of the azeotropic 
- behavior in systems with double azeotropes. More 
- recenlty, \citet{ireme} presented some preliminary
-  results regarding the application of the methodology 
-  proposed by \citet{malta} in the prediction of double 
-  retrograde vaporization phenomenon in the system ethane + 
-  limonene. 
+As far as we know, the first application of these techniques of the general methodology of numerical inversion of functions from the plane to the plane, adapting them to handle a chemical engineering problem, was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes.
 
-However, several relevant aspects were not considered there and we discuss them in this work. Among these aspects, we can briefly mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). 
+In addition to being a robust framework in the resolution of nonlinear systems, the method of inversion of functions from the plane to the plane provides relevant information that allows a deeper analysis of the function studied. Some aspects are fundamental for understanding the behavior of the function from a global perspective. Among these aspects, we can briefly mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). 
 As pointed previously, the solution of this kind of nonlinear system with typical derivative based root-finding algorithms
  (such as Newton's methods) is not a trivial task, even when using more sophisticated numerical tools \cite{jnsa} and thus,
  one of the objectives of this work is to provide a 
@@ -240,7 +229,7 @@ that are folds and cusps, and their relation with the degeneration of solutions 
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{curvas_ponto_orvalho.pdf}
-		\caption{Dew point curves for the system ethane + limonene at several temperatures. LIBOTTE, VC PODERIA COLOCAR DUAS VERTICAIS nos pontos de $y_1$ mencionados no texto, para ver as interseções.....RETIRAR ESTA FRASE!!!}\label{fig:dew_point_curve}
+		\caption{Dew point curves for the system ethane + limonene at several temperatures.}\label{fig:dew_point_curve}
 	\end{center}
 \end{figure}
 
@@ -259,8 +248,8 @@ of the function defining  the nonlinear
  The remaining of this work is organized as follows. First we
  discuss the thermodynamic model. Next we 
  present the mathematical 
- and numerical methodology, begining with an example of 
- a function scalar function of one variable (1D case) and 
+ and numerical methodology, beginning with an example of 
+ a scalar function of one variable (1D case) and 
  showing how the critical points and their images are used
  to break the equation in cases where the number of 
  solutions is constant, followed by  a discussion of functions
@@ -276,13 +265,26 @@ of the function defining  the nonlinear
 \subsection{Thermodynamic models and problem formulation}
 
 All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), are
- conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in \citet{ireme}.
+ conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. The values of the chemical properties of each of the components of the mixture that are fundamental for modeling the problem are listed in Table \ref{tbl:chemical_properties}.
+
+\begin{table}
+  \caption{Chemical properties of the substances in the mixture}
+  \label{tbl:chemical_properties}
+  \begin{tabular}{cccc}
+    \hline
+    Substance & Critical temperature $ \left( K \right) $ & Critical pressure $ \left( kPa \right) $ & Acentric factor (--) \\
+    \hline
+    \ce{C2H6} & 305.3 & 4872 & 0.100 \\
+    \ce{C10H16} & 660 & 2750 & 0.313 \\
+    \hline
+  \end{tabular}
+\end{table}
 
 For a binary mixture, the phase equilibrium problem can be formulated as:
 \begin{eqnarray}
 \hat{\phi}_i^L x_i = \hat{\phi}_i^V y_i\:, \hspace{0.1in} i = 1,2\:.
 \end{eqnarray}
-In the last equation $\hat{\phi}$ represents the fugacity coefficient for component $i$ (using the Peng-Robinson model), $x_i$ is the molar fraction in the liquid phase, $y_i$ represents the vapor phase. The superscripts $L$ and $V$ refer to the liquid and vapor phases, respectively.
+In the last equation, $\hat{\phi}$ represents the fugacity coefficient for component $i$ (using the Peng-Robinson model), $x_i$ is the molar fraction in the liquid phase and $y_i$ represents the vapor phase. The superscripts $L$ and $V$ refer to the liquid and vapor phases, respectively.
 
 Using $x_2 = 1 - x_1$ and $y_2 = 1 - y_1$, the nonlinear algebraic problem (in the plane) is then:
 \begin{subequations}
@@ -292,11 +294,9 @@ Using $x_2 = 1 - x_1$ and $y_2 = 1 - y_1$, the nonlinear algebraic problem (in t
 \end{eqnarray}
 \end{subequations}
 
-The vector of unknowns, considering the specification of temperature and vapor molar fractions, is $p = (x_1,P)$. Let the residue of the nonlinear equations be denoted by
- $f_i$, and define  $F =F(x_1,P)=(f_1,f_2)=
- (\hat{\phi}_1^L x_1 - \hat{\phi}_1^V y_1, \hat{\phi}_2^L (1-x_1) - \hat{\phi}_2^V (1-y_1))$. 
-Thus, in general, 
-the nonlinear algebraic system can be re-stated as
+The vector of unknowns, considering the specification of temperature and vapor molar fractions, is $p = (x_1,\;P)$. Let the residue of the nonlinear equations be denoted by $f_i$, and define  $F =F(x_1,\;P)=(f_1,\;f_2)= (\hat{\phi}_1^L x_1 - \hat{\phi}_1^V y_1,\;\hat{\phi}_2^L (1-x_1) - \hat{\phi}_2^V (1-y_1))$. 
+Thus, in general, the nonlinear algebraic system can be re-stated as
+%
 \begin{equation}
 F(p) = q\: ,
 \end{equation}
@@ -352,38 +352,27 @@ $F(1 \pm \sqrt{3}/3)=\mp 2\sqrt{3}/9$ and $F(0)=0$.
 %
 These  points suggest  a partition of the
  range of $F$  in seven subsets, 
-$\mathbb{R}= {\cal T}_1\cup {\cal J}_2\cup {\cal T}_3 \cup {\cal J}_4 \cup {\cal T}_5\cup {\cal J}_6\cup {\cal T}_7$, 
-\begin{eqnarray*}
-\text{jumping sets}&& {\cal J}_2=\{-\frac{2\sqrt{3}}{9}\}\: , 
-\ {\cal J}_4= \{0\}\: , {\cal J}_6=\{\frac{2\sqrt{3}}{9}\} \:,
-\\
- \text{tile sets} && {\cal T}_1=]-\infty\ ,-\frac{2\sqrt{3}}{9}[\: ,  
- {\cal T}_3 = ]-\frac{2\sqrt{3}}{9},0[\: ,
- {\cal T}_5 = ]0,\frac{2\sqrt{3}}{9}[\: , 
- {\cal T}_7=]\frac{2\sqrt{3}}{9},+\infty[\: .
-\end{eqnarray*}
-Note that the number of solutions is constant in each tile.
-The overall strategy for solving the equation $F(p)=q$ is to 
-compute the jumping sets and, by taking the complementary
-set, 
-decompose the range of $F$ in its jumping and tile sets, 
-have 
-a bank of solved points with representatives more or less 
-covering all
-the tile sets, and to solve the equation with the 
-bank of solved points providing initial guesses for each
-solution.
+$\text{I\!R}= {\cal T}_1\cup {\cal J}_2\cup {\cal T}_3 \cup {\cal J}_4 \cup {\cal T}_5\cup {\cal J}_6\cup {\cal T}_7$,
+%
+\begin{equation*}
+\begin{split}
+\text{jumping sets} \quad & {\cal{J}}_{2} = \left\lbrace-\frac{2\sqrt{3}}{9}\right\rbrace , \; {\cal{J}}_{4} = \left\lbrace 0 \right\rbrace , \; {\cal{J}}_{6} = \left\lbrace\frac{2\sqrt{3}}{9}\right\rbrace \\
+\text{tile sets} \quad & {\cal{T}}_{1} = \left] -\infty,\;-\frac{2\sqrt{3}}{9}\right[ , \; {\cal{T}}_{3} = \left] -\frac{2\sqrt{3}}{9}, \; 0\right[ , \; {\cal{T}}_{5} = \left]0, \; \frac{2\sqrt{3}}{9}\right[ , \; {\cal{T}}_{7} = \left]\frac{2\sqrt{3}}{9}, \; +\infty\right[ \\
+\end{split}
+\end{equation*}
+
+\noindent Note that the number of solutions is constant in each tile. The overall strategy for solving the equation $F(p)=q$ is to compute the jumping sets and, by taking the complementary set, decompose the range of $F$ in its jumping and tile sets, have a bank of solved points with representatives more or less covering all the tile sets, and to solve the equation with the bank of solved points providing initial guesses for each solution.
 %
 
 \subsubsection{Jumping and tiles in the 2D case}
 Now we consider 2$\times$2 systems of  equations, $F(p)=q$, 
 with 
-$q\in \mathbb{R}^2$ and $F$ a function defined on a 
+$q\in \text{I\!R}^2$ and $F$ a function defined on a 
 subset $\Omega$ 
 of  the plane to the plane, 
-$F:\mathbb{R}^2\supset \Omega\to \mathbb{R}^2$. Recall 
+$F:\text{I\!R}^2\supset \Omega\to \text{I\!R}^2$. Recall 
 that  
-the Jacobian $JF|_p$ at a point $p=(x,y)\in \mathbb{R}^2$ is
+the Jacobian $JF|_p$ at a point $p=(x,y)\in \text{I\!R}^2$ is
 %
 \[ JF|_p  = \begin{pmatrix}
 \dfrac{\partial f_1}{\partial x} & \dfrac{\partial f_1}{\partial y} \vspace{0.5em} \\
@@ -404,7 +393,7 @@ if a function has only non-degenerate critical points
 is formed by curves, the
 critical curves, 
 \begin{eqnarray*}
-{\cal C}= \{p\in \mathbb{R}^2 \mid \det(JF|_q)=0\}\ ,
+{\cal C}= \{p\in \text{I\!R}^2 \mid \det(JF|_q)=0\}\ ,
 \end{eqnarray*}
 and the image of ${\cal C}$, 
 $F({\cal C})=\{q=F(p), \text{ for all } p \in {\cal C}\}$, is
@@ -415,7 +404,7 @@ critical image and the image of the
 boundary of the domain of $F$, ${\cal J}=F({\cal C})\cup F(\Omega)$, define the jumping curves. The tiles 
 are the connected components on the complement of $\cal J$; 
 if there are $k$ connected components, ${\cal T}_i$, 
-then $\mathbb{R}^2= \left( \cup_{i=1}^k{\cal T}_i\right) \cup{\cal J}$, just as in the 1D example.
+then $\text{I\!R}^2= \left( \cup_{i=1}^k{\cal T}_i\right) \cup{\cal J}$, just as in the 1D example.
 The number of solutions of the equation $F(p)=q$
 is constant if $ q\in {\cal T}_i$, and may jump when crossing  ${\cal J}$.
 
@@ -456,24 +445,19 @@ method can be found in \citet{malta}.
 
 The method is intended to solve systems with two equations and
  two unknowns of type $ F\left(p\right) = q $ with $ p, q \in 
-{\mathbb{R}}^2 $ and $ F $ should be a smooth function. 
-
-In dealing specifically with critical points, they are
-assumed of just two types, either folds or cusps. 
+{\text{I\!R}}^2 $ and $ F $ should be a smooth function. In dealing specifically with critical points, they are assumed of just two types, either folds or cusps. 
 % Before addressing each of them, it is important to introduce that a point in the image of $ F $ is called a regular value if all of its pre-images are regular points, as previously defined. 
-  A fold is a non-degenerate critical point such that:
+A fold is a non-degenerate critical point such that:
 %
 \begin{itemize}
 \item the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ do not coincide.
 \end{itemize}
 
-
-
 In cases where the kernel $ K $ and the line $ T $ tangent to the critical set coincide, there is a cusp-like critical point. In general,  cusps are non-degenerate critical points such that:
 %
 \begin{itemize}
 \item the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ coincide;
-\item for a smooth parametrization $ \gamma : \left( -\epsilon, \; \epsilon \right) \to {\mathbb{R}}^2 $ of $ C $ near $ p $, with $ \gamma \left(0\right) = p $ and $ \gamma^{\prime} \left(0\right) \neq 0 $, the angle $ \theta\left(\gamma\left(t\right)\right) $ between the kernel $ K\left(\gamma\left(t\right)\right) $ of $ J\left(\gamma\left(t\right)\right) $ and the tangent line $ T\left(\gamma\left(t\right)\right) $ to $ C $ satisfies $ \theta^{\prime}\left(0\right) \neq 0 $.
+\item for a smooth parametrization $ \gamma : \left( -\epsilon, \; \epsilon \right) \to {\text{I\!R}}^2 $ of $ C $ near $ p $, with $ \gamma \left(0\right) = p $ and $ \gamma^{\prime} \left(0\right) \neq 0 $, the angle $ \theta\left(\gamma\left(t\right)\right) $ between the kernel $ K\left(\gamma\left(t\right)\right) $ of $ J\left(\gamma\left(t\right)\right) $ and the tangent line $ T\left(\gamma\left(t\right)\right) $ to $ C $ satisfies $ \theta^{\prime}\left(0\right) \neq 0 $.
 \end{itemize}
 
 Within the scope of  functions from the plane to the plane, we 
@@ -483,7 +467,7 @@ A continuous function from a subset of the plane to the plane
 is proper if  $\lim_{\vert\left(x,\;y\right)\vert\to\infty} \vert F\left(x,\;y\right)\vert = \infty$. This avoids to
 treat equations with infinitely many solutions. A 1D case, of an equation with infinite solutions, is $\sin x=0$. This happens because $\sin x$ is not a proper function. 
 %
-A smooth proper function from the plane into itself is excellent if every critical point of $ F $ is a fold or a cusp. In essence, the theory developed in \citet{malta} aims
+In turn, a smooth proper function from the plane into itself is excellent if every critical point of $ F $ is a fold or a cusp. In essence, the theory developed in \citet{malta} aims
 at solving equations defined by excellent functions that 
 satisfy yet another technical condition, the nice 
 functions. For them, the theory 
@@ -492,9 +476,9 @@ An essential feature of the class of nice functions
 is that, under a suitable topology, they are generic
 in a mathematical sense.
 That means in particular
-that they are a dense set. From a simplified point of view, 
+that they are an open set. From a simplified point of view, 
 that property expresses that any smooth
-function can be approximated arbitrarily close by a nice functions. 
+function can be approximated arbitrarily close by a nice function. 
  Therefore,
 the analysis can be restricted to this type of function.
 That is, in practice, it is enough to work 
@@ -502,7 +486,7 @@ with nice functions, thus the critical points are only
 cusps and folds.
 
 
-% algorithm was constructed to solve the $ 2\times2 $ nonlinear system of algebraic equations $ F\left(p\right) = q $, when $ F:{\mathbb{R}}^2 \to {\mathbb{R}}^2 $ is a nice function. Let $ F $ be an excellent and proper function. It is nice if its critical set $ C $ is limited and the critical image $ F\left(C\right) $ consists of a normal family of curves. $ F\left(\gamma\right) $  is a normal curve when there are no points with more than two pre-images in $ \gamma $ and, at points of self-intersection, the vectors tangent to $ F\left(\gamma\right) $ are linearly independent.
+% algorithm was constructed to solve the $ 2\times2 $ nonlinear system of algebraic equations $ F\left(p\right) = q $, when $ F:{\text{I\!R}}^2 \to {\text{I\!R}}^2 $ is a nice function. Let $ F $ be an excellent and proper function. It is nice if its critical set $ C $ is limited and the critical image $ F\left(C\right) $ consists of a normal family of curves. $ F\left(\gamma\right) $  is a normal curve when there are no points with more than two pre-images in $ \gamma $ and, at points of self-intersection, the vectors tangent to $ F\left(\gamma\right) $ are linearly independent.
 
 % Faced with this fact, one of the difficulties is to apply the method of inversion of functions from te plane to the plane in engineering problems. The complexity in parameterizing functions that describe this type of problem and checking the properties and theorems that underlie the method are some of the difficulties. At the outset, the task of verifying whether the functions describing the mathematical model of a particular engineering problem is nice can be complex. 
 
@@ -517,7 +501,7 @@ creating the bank of solved points and calculating the pre-images from an arbitr
 Knowing the critical set is fundamental in the inversion process, since it 
 allows the computation of the critical image which, as
 illustrated in the 1D example, are places where the number
-of solutions can change --- in this cases  we say that the 
+of solutions can change --- in these cases  we say that the 
 solutions
 degenerate.
  In addition to tracing the regions where the continuation method does not face points of singularity in the inversion process, it also indicates the boundary
@@ -536,7 +520,7 @@ The previous procedure is executed until all the mesh is traversed, that is, unt
  The mesh must be sufficiently refined so that the
  whole set of  critical curves can be obtained,
   with the desired accuracy. After obtaining the set $ {\cal C} $ of critical curves, the set of critical images 
-  $F\left({\cal C}\right) $ follows by calculating the value of the function of each of the critical points contained in $ C $.
+  $F\left({\cal C}\right) $ follows by calculating the value of the function of each of the critical points contained in $ {\cal C} $.
 
 \subsubsection{Creation of the bank of solved points}
 The bank of solved points is a set of points in the image 
@@ -561,13 +545,13 @@ Once  the bank of solved points has been built,
 Choosing the point that will generate the shortest path does not guarantee that the segment will not cross some critical curve. If $ q_{0} $ is located on a different tile than $ q $, the inversion process may have problems, since the segment will necessarily cross some image of a critical or boundary curve before $ q $ is reached. Therefore, it is convenient that the bank of solved points be formed by points contained in different tiles, according to the problem solving requirements.
 
 From the point of view of user interference in relation to each of the steps of the method, the creation of the bank of solved points is the most expensive stage, especially when they are very extensive and there are several
- pre-images, according to each specific problem. However, the homotopy-continuation technique used in the inversion step (see more in \citet{allgower}) allows the use of a single bank in solving different problems of the same genre, that is, with variation of parameters, as shown in \citet{canadian}, which solved the double azeotropy problem of the system composed of benzene + hexafluorobenzene at different values of the system pressure, with the same bank of solved points generated at $ P = 20 kPa $.
+ pre-images, according to each specific problem. However, the homotopy-continuation technique used in the inversion step (see more in \citet{allgower}) allows the use of a single bank in solving different problems of the same genre, that is, with variation of parameters, as shown in \citet{canadian}, which solved the double azeotropy problem of the system composed of benzene + hexafluorobenzene at different values of the system pressure, with the same bank of solved points generated at $ P = 20 \; kPa $.
  
 \subsubsection{Inversion of an arbitrary point}
 
 The calculation of the solutions of the system of equations is accomplished through the creation of L-shaped paths using the Euler-Newton continuation method. Initially, the element $ q_{0} $ of the bank of solved points in the image that is closest to the point to be inverted $ q $ is selected. Then, the points are connected to each other through two perpendicular segments, joined by their ends, going from $ q_{0} $ to $ q $, which produces an intermediate point, called $ \tilde{q} $. The respective path in the domain will be traversed through the continuation method, starting from $ p_{0} $, that is, the point of the bank of solved points in the domain referring to $ q_{0} $. Since each point of the image stored in the bank must have all of its respective pre-images also kept in the bank, the inversion step must be executed as many times as there are entries stored in the bank of solved points in the domain relative to $ q $, in order that all the solutions of the system are found, producing different L-shaped paths, which start from the same initial guess.
 
-The predictor-corrector method used to trace the L-shaped path is based on homotopy techniques. \citet{allgower} offers a detailed approach to homotopy techniques. Here, only the main points of the methodology will be treated. In a rudimentary way, take $ F:\text{I\!R}^{n} \to \text{I\!R}^{n} $ a smooth map. In an attempt to find the values of $ p $ that determine the solutions of $ F\left(p\right) - q = 0 $, numerical methods may fail when no prior knowledge of $ F $ is known and the initial guesses taken may not be good enough to solve the problem. One way to avoid this kind of problem is to deform the original function through a homotopy technique and try to trace an implicitly defined curve in order to reach the solution of the system through a starting point. Therefore, the homotopy $ H:\text{I\!R}^{n}\times\text{I\!R} \to \text{I\!R}^{n} $ is a smooth. One can choose the convex homotopy, which is given by
+The predictor-corrector method used to trace the L-shaped path is based on homotopy techniques. \citet{allgower} offers a detailed approach to homotopy techniques. Here, only the main points of the methodology will be treated. In a rudimentary way, take $ F:\text{I\!R}^{n} \to \text{I\!R}^{n} $ a smooth map. In an attempt to find the values of $ p $ that determine the solutions of $ F\left(p\right) - q = 0 $, numerical methods may fail when no prior knowledge of $ F $ is known and the initial guesses taken may not be good enough to solve the problem. One way to avoid this kind of problem is to deform the original function through a homotopy technique and try to trace an implicitly defined curve in order to reach the solution of the system through a starting point. Therefore, the homotopy $ H:\text{I\!R}^{n}\times\text{I\!R} \to \text{I\!R}^{n} $ is a smooth map. One can choose the convex homotopy, which is given by
 
 \[ H \left( p,\; \lambda \right) = F \left( p \right) - \lambda q - \left( 1 - \lambda \right) q_{0} \; , \]
 
@@ -577,7 +561,7 @@ The purpose of the predictor-corrector method is to trace the curve by varying t
 
 \[ v_{i + 1} = u_{i} + ht \left( H^{\prime}\left( u_{i} \right) \right) \; , \]
 
-\noindent where $ h > 0 $ represents the stepsize and $ t \left( H^{\prime}\left( u_{i} \right) \right) $ is an unitary vector tangent to the solution curve at the point $ u_{i} $, obtained by QR decomposition. The stepsize must be arbitrarily small in order to obtain a reasonable approximation. Also, if $ u_{i} $ is sufficiently close to the curve, then the predictor point $ v_{i + 1} $ will also be sufficiently close to the curve and the minimization problem will have an unique solution, which will be refined in the corrector step.
+\noindent where $ h > 0 $ represents the stepsize and $ t \left( H^{\prime}\left( u_{i} \right) \right) $ is an unitary vector tangent to the solution curve at the point $ u_{i} $, obtained by QR decomposition. The stepsize must be arbitrarily small in order to obtain a reasonable approximation. Also, if $ u_{i} $ is sufficiently close to the curve, then the predicted point $ v_{i + 1} $ will also be sufficiently close to the curve and the minimization problem will have an unique solution, which will be refined in the corrector step.
 
 In turn, the scheme used in the corrector step is the Newton's method. However, the jacobian matrix $ H^{\prime} $ is not square, since the homotopy technique introduces the $ \lambda $ parameter into the function that describes the problem, and therefore the matrix is not invertible. Thus, Newton's method requires modifications to satisfy the dimension of the problem. Therefore, the problem of minimization motivates the introduction of an alternative to the inversion of non-square matrices: the Moore-Penrose inverse. Denoted by $ A^{+} $, the Moore-Penrose right inverse of a matrix $ A $ is defined by $ A^{+} = A^{T} \left(AA^{T}\right)^{-1} $, where $ A $ is a $ n \times \left( n + 1 \right) $ matrix with maximal rank. Therefore, the recurrence relation that defines Newton's method in the corrector step is given by
 
@@ -590,8 +574,7 @@ The stepsize can also be adjusted by analyzing the angle between two consecutive
 \section{Numerical Results}
 
 The methodology of numerical inversion of two-variable functions, adapted from \citet{malta} which considered the special case of function from the plane to the plane,
- is employed in this phase equilibrium calculation. 
- Some details regarding the construction of the bank of solved points and the numerical steps of the inversion process are given by \citet{ireme}. We present an in-depth analysis of the
+ is employed in this phase equilibrium calculation. We present an in-depth analysis of the
  quantity of pre-images in  limit-situations (for instance, when  the critical image is approached). Furthermore, we 
   present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions.
  
