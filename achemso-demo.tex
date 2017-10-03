@@ -20,6 +20,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{csquotes}
+\usepackage{multirow}
 % Theorems
 %-----------------------------------------------------------------
 \newtheorem{thm}{Theorem}[section]
@@ -287,7 +288,7 @@ For a binary mixture, the phase equilibrium problem can be formulated as:
 In the last equation, $\hat{\phi}$ represents the fugacity coefficient for component $i$ (using the Peng-Robinson model), $x_i$ is the molar fraction in the liquid phase and $y_i$ represents the vapor phase. The superscripts $L$ and $V$ refer to the liquid and vapor phases, respectively.
 
 Using $x_2 = 1 - x_1$ and $y_2 = 1 - y_1$, the nonlinear algebraic problem (in the plane) is then:
-\begin{subequations}
+\begin{subequations} \label{eq:sistema_problema}
 \begin{eqnarray}
 \hat{\phi}_1^L x_1 = \hat{\phi}_1^V y_1\:, \\
 \hat{\phi}_2^L (1-x_1) = \hat{\phi}_2^V (1-y_1)\:.
@@ -573,58 +574,37 @@ The stepsize can also be adjusted by analyzing the angle between two consecutive
 
 \section{Numerical Results}
 
-The methodology of numerical inversion of two-variable functions, adapted from \citet{malta} which considered the special case of function from the plane to the plane,
- is employed in this phase equilibrium calculation. We present an in-depth analysis of the
- quantity of pre-images in  limit-situations (for instance, when  the critical image is approached). Furthermore, we 
-  present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions.
+The methodology of numerical inversion of two-variable functions, adapted from \citet{malta} which considered the special case of functions from the plane to the plane, is employed in this phase equilibrium calculation. We present an in-depth analysis of the quantity of pre-images in limit-situations (for instance, when  the critical image is approached). Furthermore, we present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions. It will also be discussed the relation of the system temperature variation with the mathematical critical curves and the possibility of using a single bank of solved points for the resolution of several different systems.
+
+As already mentioned, the results that will be presented here were obtained essentially from systems (as described in Equation \ref{eq:sistema_problema}) with three different configurations. In the first case, when the temperature of the system is $ T = 307.4 $ K and the molar fraction in the vapor phase of the ethane is set at $ y_{1} = 0.998966 $, the limit situation of inversion of a point arbitrarily close to the critical image will be evaluated and the degeneracy condition solutions will be analyzed. Under these conditions, some peculiar aspects about critical curves will also be shown. Furthermore, the degeneracy of solutions will also be examined from the point of view of the simultaneously resolution of two systems with different temperatures, in order to explain the disappearance of solutions under critical conditions. For this analysis, the system temperatures $ T = 304.5 $ K and $ T = 280 $ K will be taken, so that the molar fraction of ethane in the vapor phase is the same in both systems.
  
-Table \ref{tab:roots_double_dome} presents the compositions and pressures for the dew point calculation in the system ethane + limonene at $T = 307.4$ K and $y_1 = 0.998966$, where the \enquote{double-dome} structure appears, with four dew point pressures (and compositions of the liquid phase). We note, considering the data presented in Table \ref{tab:roots_double_dome}, that one root corresponds to a low pressure root (Root 1) and the others are high pressure roots (which are close to each other). From the point of view of the calculation techniques --- using classical numerical methods, such as Newton-Raphson methods --- we are interested in robust methodologies capable not only to find all roots, but also to find  the high pressure roots in a robust way.
+Table \ref{tab:resultados_pontos_orvalho_pressoes} presents the compositions and pressures for the dew point calculation in the system ethane + limonene at $T = 307.4$ K and $y_{1} = 0.998966 $, where the \enquote{double-dome} structure appears, with four dew point pressures (and compositions of the liquid phase), as shown in Figure \ref{fig:dew_point_curve}. The table also lists the results obtained by the method of inversion of functions from the plane to the plane for the phase equilibrium calculation problem when $ T = 304.5 $ K and $ T = 280 $ K, both fixed $ y_{1} = 0.99945 $, where a \enquote{S} shape dew curve appears, with three and one physical roots, respectively.
 
 \begin{table}
-  \caption{Dew point compositions and pressures for $T = 307.4$ K and $y_1 = 0.998966$ (Case 1).}
-  \label{tab:roots_double_dome}
-  \begin{tabular}{lll}
-  \hline
-    Root & $ x_{1} $ & $ P \left( kPa \right) $ \\
-    \hline
-    1 & 0.1567 & 619.2575 \\
-    2 & 0.9829 & 4859.4621 \\
-    3 & 0.9918 & 4931.2247 \\
-    4 & 0.9979 & 5007.2503 \\
-    \hline
-  \end{tabular}
-\end{table}
-
-In order to better understand the geometry of the nonalgebraic
-system of equilibrium, we consider some modified problems
-(perturbed versions of the original one) --- which bear no 
-immediate physical meaning --- and use the same numbering of the
-roots (1 to 4).
-
-We also test the dew point calculation at $T = 304.5$ K and $y_1 = 0.99945$, where a \enquote{S} shape dew curve appears, with three physical roots. The roots are detached in Table \ref{tab:roots_S}.
-
-\begin{table}[http!]
-	\begin{center}
-	\begin{tabular}{ccc} \hline \small
-Root & $x_1$ & $P$ (kPa) \\
+\centering
+\renewcommand*{\arraystretch}{1.3}
+\caption{Dew point compositions and pressures for all cases studied.}
+\label{tab:resultados_pontos_orvalho_pressoes}
+\begin{tabular}{ccccccc}
 \hline
-1 & 0.3064 & 1209.3572 \\
-2 & 0.8442 & 3900.9812 \\
-3 & 0.9917 & 4671.3568 \\
-	\hline
-	\end{tabular}
-	\caption{ {\small Dew point compositions and pressures for $T = 304.5$ K and $y_1 = 0.99945$ (Case 2).}}\label{tab:roots_S}
-	\end{center}
+\multirow{3}{*}{Roots} & \multicolumn{2}{c}{$ T = 307.4 $ K} & \multicolumn{2}{c}{$ T = 304.5 $ K} & \multicolumn{2}{c}{$ T = 280 $ K} \\
+ & \multicolumn{2}{c}{$ y_{1} = 0.998966 $} & \multicolumn{4}{c}{$ y_{1} = 0.99945 $} \\ \cline{2-7} 
+ & $ x_{1} \left( mol / mol \right) $ & $ P \left( kPa \right) $ & $ x_{1} \left( mol / mol \right) $ & $ P \left( kPa \right) $ & $ x_{1} \left( mol / mol \right) $ & $ P \left( kPa \right) $ \\ \hline
+1 & 0.1567 & 619.3 & 0.3064 & 1209.4 & 0.0736 & 175.4 \\
+2 & 0.9829 & 4859.5 & 0.8442 & 3900.9 & --- & --- \\
+3 & 0.9918 & 4931.2 & 0.9917 & 4671.6 & --- & --- \\
+4 & 0.9979 & 5007.3 & --- & --- & --- & --- \\ \hline
+\end{tabular}
 \end{table}
+
+One can note that considering the data of the first case presented in Table \ref{tab:resultados_pontos_orvalho_pressoes}, that one solution corresponds to a low pressure root (root 1) and the others are high pressure roots (which are close to each other). From the point of view of the calculation techniques --- using classical numerical methods, such as Newton-Raphson methods --- we are interested in robust methodologies capable not only to find all roots, but also to find  the high pressure roots in a robust way. In order to better understand the geometry of the non-algebraic system of equilibrium, we consider some modified problems (perturbed versions of the original one) --- which bear no immediate physical meaning --- and use the same numbering of the roots (1 to 4).
  
 \subsection{Thermodynamic critical point calculations}
 
 Here we present the critical curve for the mixture ethane + limonene for the entire range of compositions. As reported previously, the term \enquote{critical curve} can exhibit two different meanings: the mathematical  and the thermodynamic.
  Here we deal
  with thermodynamic critical points, and we use the approach of Heidemman and Khalil \citep{heidemman}, with a double-loop structure in temperature-molar volume, for the critical point calculation.
-
-Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}.
-
+ 
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{temperatura_pressao.pdf}
@@ -632,14 +612,13 @@ Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperat
 	\end{center}
 \end{figure}
 
+Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}.
+
 \subsection{Results at $T$ = 307.4 K and $y_1 = 0.998966$}
 
 \subsubsection{An in-depth examination of the critical curves}
 
- Here, we present a deeper analysis of the 
- mathematical critical curves in this system.
-%
-Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as exhibited in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a \enquote{quasi-tangent} point (or a meeting point).
+Here, we present a deeper analysis of the mathematical critical curves in this system. Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as exhibited in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a \enquote{quasi-tangent} point (or a meeting point).
 
 \begin{figure}
 	\begin{center}
@@ -648,9 +627,7 @@ Clearly, we note that --- in the highlighted region --- the critical curves exhi
 	\end{center}
 \end{figure}
  
-An amplification of the region in the neighborhood of the \enquote{quasi-tangent} point, using a color pattern (in order to clarify the relationship between domain and image) is presented in Figure \ref{fig:domain_image}.
-
-AQUI
+\noindent An amplification of the region in the neighborhood of the \enquote{quasi-tangent} point, using a color pattern (in order to clarify the relationship between domain and image) is presented in Figure \ref{fig:domain_image}.
 
 \begin{figure}
 \centering
@@ -672,62 +649,64 @@ AQUI
 
 \subsubsection{Inversion process --- approaching to the critical image}
 
-Figure \ref{fig:points_image} presents the sequence of points inverted in the image, beginning at $q = \left(0,0\right)$ and ending close to the critical image (moving to the right side of the image). The squares in the figure are the bank of solved points. The inversion process is then applied, producing the pre-images of the inverted points, in the domain. In this situation, four pre-images are observed (in accordance with the number of solutions of the original nonlinear problem). Obviously, these solutions are not roots of the original problem, since we have $q = (0,0)$ for the physical nonlinear problem. On the other hand, as pointed previously, we  maintain the same numbering of the roots 
-(1 to 4).
+Since the mathematical critical curves represent the set of points at which the value of the determinant of the Jacobian matrix is equal to zero, it is expected that the numerical method may have problems approaching these curves continuously until the degeneracy condition occurs, that is, a change in the quantity of their pre-images --- and therefore the solutions of the problem --- because of the collapse of solutions at a certain point in the critical curve. This occurrence helps to explain some cases of divergence of numerical methods based on derivatives.
 
-The sequence of inverted points --- in the domain --- for Roots 3 and 4 (high pressure roots) is represented by Figure \ref{fig:points_domain_3_4}. The final point inverted is detailed in the zoom (the blue circles). Clearly, we are facing a degeneration process: the number of roots 
- drops from four to two, since these pre-images tend to the 
- critical curve.
+Due to the nonlinearity of the problem, all the pre-images of a set of points in the image were obtained through the method of inversion of functions from the plane to the plane. The set of points in the image were arranged from $ q = \left(0,0\right) $ to a point sufficiently close to the critical image, equally spaced from each other and displaced only in the horizontal direction. In addition, each of the points in the image was identified by one color and their respective pre-images received the same color for all four sets of solutions mentioned above. Through this scheme, it was possible to analyze the behavior of the solutions in the domain and to estimate how close a pre-image of a given point $ q $ in the image approaches a critical curve, as $ q $ approaches the critical image.
 
-Figures \ref{fig:points_domain_1} and \ref{fig:points_domain_2} contain the sequence of inverted points regarding  Roots 1 and 2, respectively. In these cases, the inverted points are not close to the critical curves.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.50]{sequencia_pontos_imagem.pdf}
-		\caption{Sequence of inverted points (image).}\label{fig:points_image}
-	\end{center}
+\begin{figure}[!ht]
+\centering
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{sequencia_pontos_imagem.pdf}
+  \caption{Sequence of inverted points in the image.}
+  \label{fig:points_image}
+\end{subfigure}\hfill
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{sequencia_pontos_dominio.pdf}
+  \caption{Sequences of inverted points in the domain for roots 3 and 4.}
+  \label{fig:points_domain_3_4}
+\end{subfigure}\\
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{sequencia_pontos_dominio_3.pdf}
+  \caption{Sequence of inverted points in the domain for root 1.}
+  \label{fig:points_domain_1}
+\end{subfigure}\hfill
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{sequencia_pontos_dominio_2.pdf}
+  \caption{Sequence of inverted points in the domain for root 2.}
+  \label{fig:points_domain_2}
+\end{subfigure}
+\caption{Sequence of points that have been inverted and their respective pre-images, identified by similar colors.}
+\label{fig:sequencia_inversao}
 \end{figure}
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.50]{sequencia_pontos_dominio.pdf}
-		\caption{Sequences of inverted points (domain), Roots 3 and 4.}\label{fig:points_domain_3_4}
-	\end{center}
-\end{figure}
+Figure \ref{fig:points_image} presents the sequence of points inverted in the image. The squares in the figure are the bank of solved points. In this situation, four pre-images are observed (in accordance with the number of solutions of the original nonlinear problem). Obviously, these solutions are not roots of the original problem, since we have $ q = \left(0,0\right) $ for the physical nonlinear problem. On the other hand, as pointed previously, we maintain the same numbering of the roots (1 to 4).
 
+The sequences of inverted points --- in the domain --- for roots 3 and 4 (high pressure roots) are represented by Figure \ref{fig:points_domain_3_4}. The end point of each of the sequences, that is, the one in which the pre-image moves closer to the critical curve (represented by the blue color), is being shown in detail by zooming. We can clearly observe the occurrence of a degeneration scenario: two solutions collapsing simultaneously to the same point of the critical curve. It should be noted that the points can be as close as desired to the critical set, which depends on the level of approximation that has been used, since the continuation method does not cross the critical curve during the inversion process. However, it is possible to estimate the point of the critical curve in the domain in which the points of each of the sequences will degenerate. Just draw a straight line which connects to each other, and check what is the intersection point between this line and the critical curve. On the other hand, Figures \ref{fig:points_domain_1} and \ref{fig:points_domain_2} contain the sequence of inverted points regarding roots 1 and 2, respectively. In these cases, the inverted points are not close to the critical curves.
 
+Another very important factor to be considered is the positioning of the elements of each of the calculated pre-image sequences. In order for solution degeneration to occur, the degenerated points must be located on different tiles. As one point in the image approaches a critical image, two of its respective pre-images may approach a critical curve. According to \citet{malta}, the scenario that characterizes the degeneracy of solutions in pairs, as is the case of the problem studied, is that the solutions are approaching the vicinity of a critical point of the fold type. The creation of a robust bank of solved points is also essential in this analysis, since it would not be possible to calculate the correct pre-images if the inversion method took as an initial guess a point in the bank of solved points in the domain that was located on a different tile than the one in which the desired solution is.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.50]{sequencia_pontos_dominio_3.pdf}
-		\caption{Sequence of inverted points (domain), Root 1.}\label{fig:points_domain_1}
-	\end{center}
-\end{figure}
+Hereafter, we detail the inversion process for the point close to the critical image. Figure \ref{fig:L_path_image} indicates the L-shaped path in the image. Again, the square represents a point in the bank of solved points and the desired point, namely, the point to be inverted, is represented by a circle with the corresponding color. In turn, the paths in the domain are detached in Figure \ref{fig:L_path_domain}. One can note that the L-shaped paths were deformed and are virtually straight lines. This is due to the critical image of the system limiting the tile where the point to be inverted is located in a very restricted area. With this, the bank of solved points must be relatively close to the point to be inverted (besides the fact of taking the point contained in the bank that is closest to the point to be inverted as initial guess) and the method of continuation reaches the pre-image through an almost straight path. Once again, the degeneration process is clearly indicated and the critical curve has a fold at this point.
 
 \begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.50]{sequencia_pontos_dominio_2.pdf}
-    \caption{Sequence of inverted points (domain), Root 2.}\label{fig:points_domain_2}
-  \end{center}
-\end{figure}
-
-We detail the inversion process 
- for the point close to the critical image. Figure \ref{fig:L_path_image} indicates the \enquote{L} path in the image. Again, the square is a point in the bank of solved points and the desired point is represented by a circle.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.50]{caminho_L_degeneracao_imagem_new.pdf}
-		\caption{The \enquote{L} path in the image.}\label{fig:L_path_image}
-	\end{center}
-\end{figure}
-
-The paths in the domain are detached in Figure \ref{fig:L_path_domain}. We can note that the \enquote{L} paths were deformed and are virtually straight lines. Once again, the degeneration process is clearly indicated and the critical curve has a fold at this point.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio_new.pdf}
-		\caption{The \enquote{L} path in the domain, Roots 3 and 4.}\label{fig:L_path_domain}
-	\end{center}
+\centering
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{caminho_L_degeneracao_imagem_new.pdf}
+  \caption{L-shaped path in the image.}
+  \label{fig:L_path_image}
+\end{subfigure}\hfill
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{caminhos_L_degeneracao_dominio_new.pdf}
+  \caption{L-shaped path in the domain for the roots 3 and 4.}
+  \label{fig:L_path_domain}
+\end{subfigure}
+\caption{}
+\label{fig:L_path_domain_image}
 \end{figure}
 
 \subsection{Results at $T$ = 304.5 K and $y_1 = 0.99945$}
@@ -772,7 +751,7 @@ domain for the last point (marked in blue in the two previous figures). Again, w
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio3.pdf}
-		\caption{The \enquote{L} path in the domain, Root 1, for $T$ = 280.0 K and $y_1 = 0.99945$.}\label{fig:L_S2}
+		\caption{The L-shaped path in the domain, Root 1, for $T$ = 280.0 K and $y_1 = 0.99945$.}\label{fig:L_S2}
 	\end{center}
 \end{figure}
 
