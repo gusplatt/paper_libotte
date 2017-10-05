@@ -203,7 +203,7 @@ sense\footnote{The term \enquote{critical} assumes two meanings in this work: in
  of the desired point (calculation of all pre-images of a such 
  image).
  
-As far as we know, the first application of these techniques of the general methodology of numerical inversion of functions from the plane to the plane, adapting them to handle a chemical engineering problem, was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes.
+As far as we know, the first application of these techniques of the general methodology of numerical inversion of functions from the plane to the plane, adapting them to handle a chemical engineering problem, was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes. More recenlty, \citet{ireme} presented some preliminary results regarding the application of the methodology proposed by \citet{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene.
 
 In addition to being a robust framework in the resolution of nonlinear systems, the method of inversion of functions from the plane to the plane provides relevant information that allows a deeper analysis of the function studied. Some aspects are fundamental for understanding the behavior of the function from a global perspective. Among these aspects, we can briefly mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). 
 As pointed previously, the solution of this kind of nonlinear system with typical derivative based root-finding algorithms
@@ -266,20 +266,7 @@ of the function defining  the nonlinear
 \subsection{Thermodynamic models and problem formulation}
 
 All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), are
- conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. The values of the chemical properties of each of the components of the mixture that are fundamental for modeling the problem are listed in Table \ref{tbl:chemical_properties}.
-
-\begin{table}
-  \caption{Chemical properties of the substances in the mixture}
-  \label{tbl:chemical_properties}
-  \begin{tabular}{cccc}
-    \hline
-    Substance & Critical temperature $ \left( K \right) $ & Critical pressure $ \left( kPa \right) $ & Acentric factor (--) \\
-    \hline
-    \ce{C2H6} & 305.3 & 4872 & 0.100 \\
-    \ce{C10H16} & 660 & 2750 & 0.313 \\
-    \hline
-  \end{tabular}
-\end{table}
+ conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in \citet{ireme}.
 
 For a binary mixture, the phase equilibrium problem can be formulated as:
 \begin{eqnarray}
@@ -574,7 +561,7 @@ The stepsize can also be adjusted by analyzing the angle between two consecutive
 
 \section{Numerical Results}
 
-The methodology of numerical inversion of two-variable functions, adapted from \citet{malta} which considered the special case of functions from the plane to the plane, is employed in this phase equilibrium calculation. We present an in-depth analysis of the quantity of pre-images in limit-situations (for instance, when  the critical image is approached). Furthermore, we present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions. It will also be discussed the relation of the system temperature variation with the mathematical critical curves and the possibility of using a single bank of solved points for the resolution of several different systems.
+The methodology of numerical inversion of two-variable functions, adapted from \citet{malta} which considered the special case of functions from the plane to the plane, is employed in this phase equilibrium calculation. Some details regarding the construction of the bank of solved points and the numerical steps of the inversion process are given by \citet{ireme}. We present an in-depth analysis of the quantity of pre-images in limit-situations (for instance, when  the critical image is approached). Furthermore, we present the thermodynamic calculation of the critical points for the binary mixture ethane + limonene for the entire range of compositions. It will also be discussed the relation of the system temperature variation with the mathematical critical curves and the possibility of using a single bank of solved points for the resolution of several different systems.
 
 As already mentioned, the results that will be presented here were obtained essentially from systems (as described in Equation \ref{eq:sistema_problema}) with three different configurations. In the first case, when the temperature of the system is $ T = 307.4 $ K and the molar fraction in the vapor phase of the ethane is set at $ y_{1} = 0.998966 $, the limit situation of inversion of a point arbitrarily close to the critical image will be evaluated and the degeneracy condition solutions will be analyzed. Under these conditions, some peculiar aspects about critical curves will also be shown. Furthermore, the degeneracy of solutions will also be examined from the point of view of the simultaneously resolution of two systems with different temperatures, in order to explain the disappearance of solutions under critical conditions. For this analysis, the system temperatures $ T = 304.5 $ K and $ T = 280 $ K will be taken, so that the molar fraction of ethane in the vapor phase is the same in both systems.
  
@@ -614,7 +601,7 @@ Here we present the critical curve for the mixture ethane + limonene for the ent
 
 Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}.
 
-\subsection{Results at $T$ = 307.4 K and $y_1 = 0.998966$}
+\subsection{Results at $T = 307.4 $ K and $y_1 = 0.998966$}
 
 \subsubsection{An in-depth examination of the critical curves}
 
@@ -709,46 +696,52 @@ Hereafter, we detail the inversion process for the point close to the critical i
 \label{fig:L_path_domain_image}
 \end{figure}
 
-\subsection{Results at $T$ = 304.5 K and $y_1 = 0.99945$}
+\subsection{Results at $ T = 304.5 $ K and $ T = 280 $ K, with $ y_1 = 0.99945 $}
 
-At $T = 304.5$ K and $y_1 = 0.99945$, the dew point curve still exhibits a double retrograde behavior, but now as a \enquote{S} shape (instead of a double dome). In this situation, we observe three dew point pressures (and liquid compositions) for a narrow range of molar fractions.
+In the case analyzed previously, the degeneracy of two of the system solutions around a fold was clear when the point to be inverted was sufficiently close to the critical image. Now, two cases will be analyzed simultaneously, such as each of the systems, through only the variation of their temperature, presents different quantities of solutions. The objective is to show the exact moment in which the degeneration of two solutions of the problem occurs, but due to the proximity of the solutions to the critical set. Here, the same strategy of the previous case will be used to obtain the results: a sequence of points in the image will be inverted, from a known point (for instance, $ q = \left(0, 0\right) $) to a point sufficiently close to the critical image, without being crossed. Thus it is possible to observe the behavior of the solutions in the domain of the problem.
 
-Figure \ref{fig:imagem_S} shows the path of the inversion processes, beginning at $q = (0,0)$ and approaching 
-the critical image.
+At $T = 304.5$ K and $y_1 = 0.99945$, the dew point curve still exhibits a double retrograde behavior, but now the curve has a sigmoidal shape (instead of a double dome). In this situation, we observe three dew point pressures (and liquid compositions) for a narrow range of molar fractions. This time, the system has two solutions at high pressures and one under reduced pressure. In addition, the distance between the solutions, in terms of pressure, is relatively higher than in the previous case.
 
 \subsubsection{Inversion process --- approaching  the critical image}
 
+Figure \ref{fig:imagem_S} shows the sequence of points in the image to be inverted, from $ q = \left(0, 0\right) $ to a point sufficiently close to the critical image. Following the same trend, the points in the image were identified by distinct colors, and their pre-images respected the established organization. The bank of solved points was randomly arranged in the image and each of its pre-images was obtained. In relation to the previous problem, it is not possible to use the same bank of solved points, since two parameters were varied, temperature and pressure, what makes the system have absolutely different thermodynamic characteristics. The zoom in Figure \ref{fig:imagem_S} shows that the blue point does not intersect or even cross the critical image.
+
+Figure \ref{fig:domain_S} shows the behavior of each of the pre-images, for the two solutions at high pressures (roots 2 and 3), obtained through the method of inversion of functions from the plane to the plane. As expected, the behavior of the sequence of pre-images of the two solutions in question suggests that as we approach the critical image two solutions approach the critical curve until both collapse in a given point of the critical curve. This behavior characterizes the degeneracy of solutions.
+
+It is known that, according to the definition, one of the conditions for characterizing a critical points of the fold type is that the kernel of the Jacobian matrix at the critical point does not coincide with the vector tangent to $ {\cal{C}} $ at the same point. In Figure \ref{fig:domain_S}, the critical point at which degeneration occurs is estimated and denoted by $ c_{k} $. The approximation was performed by interpolating between the sequence of pre-images and $ c_{k} $ is a point of the critical curve that was crossed by the interpolated curve. The accuracy of the $ c_{k} $ approximation is not significant, since it is conjectured that there are only folds in the vicinity of $ c_{k} $. Therefore, the kernel of the Jacobian matrix in $ c_{k} $ was obtained and, through the analysis of Figure \ref{fig:domain_S}, it is clear that this vector does not coincide with the vector tangent to $ {\cal{C}} $ in $ c_{k} $.
+
 \begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.45]{imagem3.pdf}
-		\caption{Sequence of inverted points (image) for $T$ = 304.5 K and $y_1 = 0.99945$.}\label{fig:imagem_S}
-	\end{center}
+\centering
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{imagem3.pdf}
+  \caption{Sequence of inverted points (image) for $T$ = 304.5 K and $y_1 = 0.99945$.}
+  \label{fig:imagem_S}
+\end{subfigure}\hfill
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{dominio3.pdf}
+  \caption{Sequence of inverted points (domain) for $T$ = 304.5 K and $y_1 = 0.99945$ (Roots 2 and 3).}
+  \label{fig:domain_S}
+\end{subfigure}
+\caption{}
+\label{fig:L_path_domain_image}
 \end{figure}
 
-The movement of the pre-images obtained in the inversion process is illustrated in Figure \ref{fig:domain_S}. We note that, when $q$ approaches the critical image, two pre-images tend to disappear in a fold. We also displayed the kernel of the Jacobian matrix ($\ker(J)$).
+In turn, Figure \ref{fig:L_S} illustrates the L-shaped path of the inversion process in the domain to the last point of the sequence in the image (the one closest to the critical image, marked in blue in Figure \ref{fig:imagem_S}). Again, we observed that the two pre-images, corresponding to roots 2 and 3, tend to degenerate into a single pre-image. In addition, one can note the importance of knowing the critical set of the problem and, consequently, the tiles that form the domain of the system. They define the points of singularities that may cause problems to the continuation method in the process of creating the L-shaped path of the inversion step and consequently provide the analysis of the degeneracy of solutions.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.50]{dominio3.pdf}
-		\caption{Sequence of inverted points (domain) for $T$ = 304.5 K and $y_1 = 0.99945$ (Roots 2 and 3).}\label{fig:domain_S}
-	\end{center}
-\end{figure}
-
-Finally, Figure \ref{fig:L_S} illustrates the \enquote{L} path of the inversion process in the 
-domain for the last point (marked in blue in the two previous figures). Again, we 
- note that the two pre-images corresponding to  Roots 2 and 
- 3 tend degenerate into a single pre-image.
-
-\begin{figure}
+\begin{figure}[!ht]
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio2.pdf}
 		\caption{The \enquote{L} path in the domain, Roots 2 and 3, for $T$ = 304.5 K and $y_1 = 0.99945$.}\label{fig:L_S}
 	\end{center}
 \end{figure}
 
-\subsection{Results at $T$ = 280.0 K and $y_1 = 0.99945$}
+The use of the bank of solved points of the previous problem would not be possible in this problem because, in addition to the number of distinct pre-images in each of the problems, possibly the points of the bank of solved points in the domain could be located in tiles different from the desired pre-images. Since the points contained in the bank act as the initial guess for the method of continuation in the inversion step, the L-shaped path would necessarily cross the critical curve of the problem, which could cause an error in the computational routine.
 
-\begin{figure}
+Finally, Figure 9 shows the L-shaped path of the problem at T = 280 K and y1 = 0.99945. Under such conditions, the problem has only one solution, despite the sigmoid behavior, as can be seen in Figure 1.
+
+\begin{figure}[!ht]
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio3.pdf}
 		\caption{The L-shaped path in the domain, Root 1, for $T$ = 280.0 K and $y_1 = 0.99945$.}\label{fig:L_S2}
@@ -758,7 +751,11 @@ domain for the last point (marked in blue in the two previous figures). Again, w
 
 \subsection{The influence of temperature on the critical curve}
 
-The last feature to be investigated in this work corresponds to the influence of the system temperature (specified) in the critical curve. Obviously, the DRV phenomenon is a function of the temperature.
+The last resource to be investigated in this work corresponds to the influence of the system temperature (specified) on the critical curve. Obviously, the phenomenon of double retrograde vaporization is a function dependent on the temperature of the system. Since the critical curves have a direct influence on the process of obtaining pre-images --- the system solutions --- the analysis of the variation of the temperature of the system is essential in the resolution of systems of this type. The behavior of the critical curves under different values of the system parameters (in this case, the temperature) can clarify the occurrence of numerical errors in nonlinear system resolution techniques.
+
+To perform the tests, the critical sets of the systems were obtained by fixing the molar fraction of the ethane vapor phase at $ y_{1} = 0.99966 $ and varying the system temperature from $ T = 299 $ K to $ T = 300 $ K, as can be seen in the dew point curves shown in Figure \ref{fig:bubble_curves_temeprature_variation}. In this way, it was possible to evaluate the behavior of the critical images of the system, varying only one of the parameters of the model, so that all systems analyzed had the same number of pre-images when $ q = \left(0,0\right) $.
+
+In Figure \ref{fig:critical_images_temeprature_variation}, it is possible to observe the influence of the system temperature variation on the behavior of the critical images (and therefore the variation of the critical curves in the sense of the solutions degeneration) in the vicinities of $ q = \left(0, 0\right) $. As the temperature of the system decreases, its critical image is ever closer to $ q = \left(0, 0\right) $. The closer the critical image is to the point to be inverted, the more limited will be the performance of the numerical method used to obtain the results, since it increases the chances of crossing the critical curve.
 
 \begin{figure}
 \centering
@@ -771,15 +768,18 @@ The last feature to be investigated in this work corresponds to the influence of
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=0.95\columnwidth]{variacao_temperatura_ponto_bolha.pdf}
-  \caption{Bubble point curves for different temperatures}
+  \caption{Dew point curves for different temperatures}
   \label{fig:bubble_curves_temeprature_variation}
 \end{subfigure}
 \caption{Influence of system temperature variation on the critical images of the problem. The molar fraction of the vapor phase of ethane is set at $ y_1 = 0.99966 $ for all cases, as shown in the dashed line.}
 \label{fig:domain_image_r}
 \end{figure}
 
+When the molar fraction of the vapor phase of ethane is fixed, the system obviously no longer has three distinct solutions, in the case studied, when defining a temperature that carries a behavior like that shown by the dew point curve calculated at $ T = 298 $ K in Figure \ref{fig:bubble_curves_temeprature_variation}. However, the case treated here predicts that, for a given system temperature, a certain segment of the critical image may be so close to $ q = \left(0, 0\right) $ that it would be very difficult to obtain the pre-images of the system if the derivatives were evaluated sufficiently close to the point where the pre-images are desired.
+
 \section{Conclusions}
 
+It was observed that, at least in the cases studied, degenerate solutions were always those with the highest pressure value. This tendency occurs because, in general, the higher pressure solutions are more unstable (from a mathematical point of view). Particularly during the occurrence of the double-dome phenomenon of double retrograde vaporization, the upper dome occurs under a very narrow range of molar fraction and pressure in the vicinity of high pressure solutions. Under small variations of the system temperature, the double dome ceases to exist and the dew point curve takes the sigmoidal form. This fact explains the occurrence of degeneration of solutions that are usually at high pressures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The "Acknowledgement" section can be given in all manuscript
@@ -787,39 +787,10 @@ The last feature to be investigated in this work corresponds to the influence of
 %% environment, which will make the correct section or running title.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgement}
-The authors want to thank FAPERJ and CAPES for providing
- partial 
-financial support to conduct this research.
 
-Please use \enquote{The authors thank \ldots} rather than \enquote{The
-authors would like to thank \ldots}.
-
-The author thanks Mats Dahlgren for version one of \textsf{achemso},
-and Donald Arseneau for the code taken from \textsf{cite} to move
-citations after punctuation. Many users have provided feedback on the
-class, which is reflected in all of the different demonstrations
-shown in this document.
+The authors thank to the Brazilian agencies Coordination for the Improvement of Higher Education Personnel (CAPES) and the Carlos Chagas Filho Foundation for Research Support in the State of Rio de Janeiro (FAPERJ) for providing partial financial support to conduct this research.
 
 \end{acknowledgement}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% The same is true for Supporting Information, which should use the
-%% suppinfo environment.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{suppinfo}
-
-A listing of the contents of each file supplied as Supporting Information
-should be included. For instructions on what should be included in the
-Supporting Information as well as how to prepare this material for
-publications, refer to the journal's Instructions for Authors.
-
-The following files are available free of charge.
-\begin{itemize}
-  \item Filename: brief description
-  \item Filename: brief description
-\end{itemize}
-
-\end{suppinfo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The appropriate \bibliography command should be placed here.
