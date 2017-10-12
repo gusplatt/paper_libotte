@@ -532,8 +532,7 @@ Once  the bank of solved points has been built,
 
 Choosing the point that will generate the shortest path does not guarantee that the segment will not cross some critical curve. If $ q_{0} $ is located on a different tile than $ q $, the inversion process may have problems, since the segment will necessarily cross some image of a critical or boundary curve before $ q $ is reached. Therefore, it is convenient that the bank of solved points be formed by points contained in different tiles, according to the problem solving requirements.
 
-From the point of view of user interference in relation to each of the steps of the method, the creation of the bank of solved points is the most expensive stage, especially when they are very extensive and there are several
- pre-images, according to each specific problem. However, the homotopy-continuation technique used in the inversion step (see more in \citet{allgower}) allows the use of a single bank in solving different problems of the same genre, that is, with variation of parameters, as shown in \citet{canadian}, which solved the double azeotropy problem of the system composed of benzene + hexafluorobenzene at different values of the system pressure, with the same bank of solved points generated at $ P = 20 \; kPa $.
+From the point of view of user interference in relation to each of the steps of the method, the creation of the bank of solved points is the most costly stage, especially when they are very extensive and there are several pre-images, according to each specific problem. However, the homotopy-continuation technique used in the inversion step (see more in \citet{allgower}) allows the use of a single bank in solving different problems of the same genre, that is, with variation of parameters, as shown in \citet{canadian}, which solved the double azeotropy problem of the system composed of benzene + hexafluorobenzene at different values of the system pressure, with the same bank of solved points generated at $ P = 20 \; kPa $.
  
 \subsubsection{Inversion of an arbitrary point}
 
@@ -787,7 +786,9 @@ In Figure \ref{fig:critical_images_temeprature_variation}, it is possible to obs
 
 When the molar fraction of the vapor phase of ethane is fixed, the system obviously no longer has three distinct solutions, in the case studied, when defining a temperature that carries a behavior like that shown by the dew point curve calculated at $ T = 298 $ K in Figure \ref{fig:bubble_curves_temeprature_variation}. However, the case treated here predicts that, for a given system temperature, a certain segment of the critical image may be so close to $ q = \left(0, 0\right) $ that it would be very difficult to obtain the pre-images of the system if the derivatives were evaluated sufficiently close to the point where the pre-images are desired.
 
-\begin{figure}[!ht]
+Still considering the context of the system temperature variation, fixing the molar fraction of the vapor phase of the solvent, it will be presented the numerical results on the resolution capacity of different systems using a single bank of solved points. As already mentioned, the creation of the bank of solved points is the most costly step from the point of view of user interference in a step of the numerical method. Therefore, one must consider the possibility of creating a robust bank of solved points in order to minimize the effort required in this step.
+
+\begin{figure}[!hb]
 \centering
 \begin{subfigure}{.48\textwidth}
   \centering
@@ -816,6 +817,12 @@ When the molar fraction of the vapor phase of ethane is fixed, the system obviou
 \caption{All solutions of the systems varying from $ T = 299 $ K to $ T = 300 $ K, with $ y_{1} = 0.99966 $, using the same bank of solved points, obtained for the system at $ T = 299 $ K.}
 \label{fig:sequencia_inversao}
 \end{figure}
+
+Of course, the robustness of the bank of solved points does not mean strictly that the larger the amount of pre-images stored, the better the quality of the bank of solved points. One should consider the fact that the inversion step evaluates the distance between each point stored in the bank of solved points in the image and the point to be inverted. Thus, high amounts of stored points can cause slowness in the process. On the other hand, bank of solved points containing many elements can mean that they are located on different tiles, which increases the chances of success in performing the inversion step. In general, to use a single bank of solved points to obtain the pre-images of a number of distinct problems (under the circumstances already specified), the condition of using a point as the initial guess that is on the same tile in all problems must be satisfied.
+
+Figure \ref{fig:unique_bank_image} shows the L-shaped path in the image of the inversion process of the point $ q = \left(0,0\right) $ for all the problems analyzed. The point of the bank of solved points (represented by the blue square), was obtained using the system at $ T = 299 $ K, and used in the inversion process of all systems. Note that the tile on which the point of the bank of solved points in the image and the point $ q $ are located is the same, in all cases. In turn, Figures \ref{fig:unique_bank_root_1} -- \ref{fig:unique_bank_root_3} show the L-shaped paths in the domain, referring to each root of the problems, with the system temperature specified. The similarity of colors identifies the respective points in the domain and image. Note that the inversion process --- the creation of the L-shaped path --- always starts from the same point of the bank of points solved, created with $ T = 299 $ K. In the results shown in Figure \ref{fig:sequencia_inversao}, only the point closest point contained in the bank of solved points in relation to $ q $ is shown. The other points were omitted.
+
+In all the results obtained, the use of a single bank of solved points had no adverse effect in obtaining results with the accuracy defined in the continuation predictor-corrector method. The roots were obtained with satisfactory accuracy, similarly to the case when the inversion process is performed with the bank of solved points created using the same temperature of the system in which it is desired to obtain the pre-images. However, the observed difference is that, in general, the method trace a longer path until solutions are obtained. However, there are cases in which the point bank of solved points in the domain may be located closer to the desired root, due to the non-linearity of the system. Therefore, this approach can be understood as the use of a \enquote{non-ideal} initial guess in the numerical inversion process.
 
 \section{Conclusions}
 
