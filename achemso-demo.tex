@@ -161,12 +161,7 @@ separate page at the end of the document.
 %% if an abstract is not used by the target journal.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
- Double retrograde vaporization is a phase behavior phenomenon 
- that occurs close to the critical point of binary mixtures. 
- Here we employ sophisticated modern numerical methodology to 
- untangle the geometry of this complex phenomenon, based on the
- robust methodology of inversion of functions.We study an application of this methodology in the binary system formed by ethane + limonene, at three differents configurations (four dew points, three dew points and only one dew point). The results indicate a very challenging structure of the function in the neighborhood of the phenomenon.
-
+Double retrograde vaporization is a phase behavior phenomenon that occurs close to the critical point of binary mixtures, characterized by wide relative difference of volatility between its components. In general, the phenomenon occurs in a very narrow composition range, making the prediction of the molar fraction and pressure of the phase equilibrium problem a challenging problem. Here we employ sophisticated modern numerical methodology to untangle the geometry of this complex phenomenon, based on the robust methodology of inversion of functions. The objective of this work is to evaluate the system that describes the phenomenon close to the singularity points of the problem, especially with respect to the degeneration of solutions. The method used offers an effective framework for the qualitative analysis of systems of nonlinear equations. We study an application of this methodology in the binary system formed by ethane + limonene, at three different configurations (four dew points, three dew points and only one dew point). The results indicate a very complex structure of the function in the neighborhood of the phenomenon.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +187,7 @@ are applicable to our thermodynamic problem, namely, this technique \citep{malta
 generic class of functions --- the computation of
  critical curves in the mathematical 
 sense\footnote{The term \enquote{critical} assumes two meanings in this work: in the mathematical sense, a critical point of a function
- is a nonregular point (where the Jacobian matrix is 
+ is a non-regular point (where the Jacobian matrix is 
  non-invertible); in the thermodynamic sense, the 
  critical point is that where we cannot distinguish 
  between the properties of the phases.}, the construction 
@@ -203,7 +198,7 @@ sense\footnote{The term \enquote{critical} assumes two meanings in this work: in
  of the desired point (calculation of all pre-images of a such 
  image).
  
-As far as we know, the first application of these techniques of the general methodology of numerical inversion of functions from the plane to the plane, adapting them to handle a chemical engineering problem, was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes. More recenlty, \citet{ireme} presented some preliminary results regarding the application of the methodology proposed by \citet{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene.
+As far as we know, the first application of these techniques of the general methodology of numerical inversion of functions from the plane to the plane, adapting them to handle a chemical engineering problem, was presented by \citet{canadian}, in the prediction of the azeotropic behavior in systems with double azeotropes. More recently, \citet{ireme} presented some preliminary results regarding the application of the methodology proposed by \citet{malta} in the prediction of double retrograde vaporization phenomenon in the system ethane + limonene.
 
 In addition to being a robust framework in the resolution of nonlinear systems, the method of inversion of functions from the plane to the plane provides relevant information that allows a deeper analysis of the function studied. Some aspects are fundamental for understanding the behavior of the function from a global perspective. Among these aspects, we can briefly mention: (i) the influence of the system temperature in the critical curves, and (ii) the analysis of the behavior of inversions near the critical image (where the number of pre-images --- solutions of the system --- change). 
 As pointed previously, the solution of this kind of nonlinear system with typical derivative based root-finding algorithms
@@ -614,7 +609,7 @@ Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperat
 
 \subsubsection{An in-depth examination of the critical curves}
 
-Here, we present a deeper analysis of the mathematical critical curves in this system. Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as exhibited in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a \enquote{quasi-tangent} point (or a meeting point).
+Here, we present a deeper analysis of the mathematical critical curves in this system. Clearly, we note that --- in the highlighted region --- the critical curves exhibit one self-intersection, as shown in Figure \ref{fig:sinais}. Furthermore, the two critical curves show a \enquote{quasi-tangent} point (or a meeting point).
 
 \begin{figure}
 	\begin{center}
@@ -642,6 +637,8 @@ Here, we present a deeper analysis of the mathematical critical curves in this s
 \caption{Amplification of the interest region of the critical curve and the critical image.}
 \label{fig:domain_image}
 \end{figure}
+
+Critical images can intercept each other, although the critical curves in the domain are disjointed, such as the hypothesis suggested by \citet{malta}. In the same work, the authors also carried out an analysis of the change in the number of solutions of $ 2 \times 2 $ systems of nonlinear equations (the degeneration of solutions) in the vicinity of points that are folds, cusps and those that present intersection in the image.
 
 \subsubsection{Inversion process --- approaching to the critical image}
 
@@ -826,7 +823,9 @@ In all the results obtained, the use of a single bank of solved points had no ad
 
 \section{Conclusions}
 
-In this work we investigated some numerical details of the mathematical structure of the calculation of dew points in a thermodynamic system with double retrograde phenomenon (4 or 3 dew points in a narrow range of compositions), using a robust numerical strategy -- the numerical inversion of functions.
+In this work we investigated some numerical details of the mathematical structure of the calculation of dew points in a thermodynamic system with double retrograde phenomenon (4 or 3 dew points in a narrow range of compositions), using a robust numerical strategy -- the numerical inversion of functions. Despite the apparent ease of solving a nonlinear system of algebraic equations with two equations and two unknowns, the occurrence of the double retrograde vaporization phenomenon in the phase equilibrium problem inserts a considerable degree of complexity into the system, motivating the need for a a more in-depth analysis of the problem studied and the use of consistent numerical methods for the analysis of singular situations. Despite the difficulty of applying the complex theorems that support the inversion method in engineering problems and, specifically, in the problem studied here, the technique is very efficient, since satisfactory results have been obtained, even with the needs of adaptation of specific steps in the technique.
+
+By analyzing the behavior of the critical set, mainly with the temperature variation of the system, it was possible to identify regions where the solution no longer exists, when the point to be inverted in the image is sufficiently close to the critical set. Consequently, it is possible to predict the regions where, possibly, numerical methods based on derivatives may have problems of convergence. Besides that, the study of solution degeneration provides a comprehensive amount of information about the system and its behavior about complex regions.
 
 It was observed that, at least in the cases studied, degenerate solutions were always those with the highest pressure value. This tendency occurs because, in general, the higher pressure solutions are more unstable (from a mathematical point of view). Particularly during the occurrence of the double-dome phenomenon of double retrograde vaporization, the upper dome occurs under a very narrow range of molar fraction and pressure in the vicinity of high pressure solutions. Under small variations of the system temperature, the double dome ceases to exist and the dew point curve takes the sigmoidal form. This fact explains the occurrence of degeneration of solutions that are usually at high pressures.
 
