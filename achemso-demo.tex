@@ -261,13 +261,13 @@ of the function defining  the nonlinear
 \subsection{Thermodynamic models and problem formulation}
 
 All the phase equilibrium calculations, as well as the critical point curves (in the thermodynamic sense), are
- conducted for the Peng-Robinson equation of state with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in \citet{ireme}.
+ conducted for the Peng-Robinson equation of state \cite{peng_robinson} with classical mixing rules and null binary interaction parameters. Critical properties and acentric factors of pure components can be found, for instance, in \citet{ireme}.
 
 For a binary mixture, the phase equilibrium problem can be formulated as:
 \begin{eqnarray}
 \hat{\phi}_i^L x_i = \hat{\phi}_i^V y_i\:, \hspace{0.1in} i = 1,2\:.
 \end{eqnarray}
-In the last equation, $\hat{\phi}$ represents the fugacity coefficient for component $i$ (using the Peng-Robinson model), $x_i$ is the molar fraction in the liquid phase and $y_i$ represents the vapor phase. The superscripts $L$ and $V$ refer to the liquid and vapor phases, respectively.
+In the last equation, $\hat{\phi}$ represents the fugacity coefficient for component $i$ (using the Peng-Robinson model with classical mixing rules), $x_i$ is the molar fraction in the liquid phase and $y_i$ represents the vapor phase. The superscripts $L$ and $V$ refer to the liquid and vapor phases, respectively.
 
 Using $x_2 = 1 - x_1$ and $y_2 = 1 - y_1$, the nonlinear algebraic problem (in the plane) is then:
 \begin{subequations} \label{eq:sistema_problema}
@@ -294,18 +294,15 @@ functions}
 Here we present a few fundamental ideas on the solution 
 of a nonlinear system by numerical inversion of the
 associated functions.
-\subsubsection{An 1D example}
+\subsubsection{A 1D example}
 To get a grasp of the methodology of inversion of functions to 
 solve nonlinear systems of equations, we first consider a 
 simple 1D example.
 Let $F(p)=p^3-3p^2+ 2p=p(p-1)(p-2)$. 
 Assume that for physical reasons $p$ is always non-negative.
 By examining the graph of $F$ it is possible to 
-check that the equation for $q$,
-\begin{eqnarray*}
-F(p)=q, \ \ \text{that is}, \ p^3-3p^2+ 2p=q\ ,
-\end{eqnarray*}
-has  0 to 3 solutions. If $\eta(q)$ denotes the 
+check that the equation for $p$, depending on $q$, $F(p)=q$, that is, $p^3-3p^2+ 2p=q$,
+has 0 to 3 solutions. If $\eta(q)$ denotes the 
 number of solutions as a function of $q$, then, 
 \begin{small}
 \begin{eqnarray*}
@@ -326,10 +323,7 @@ The jumping points, where
  of $F$.
   The critical points
 (where the derivative is zero) satisfy
-\begin{eqnarray*}
-F'(p)=3p^2-6p+2 = 0, \ \text{that is } p=1 \pm \sqrt{3}/3\ .
-\end{eqnarray*}
-Since 0 is the only boundary point of the domain,
+$F'(p)=3p^2-6p+2 = 0$, that is $p=1 \pm \sqrt{3}/3$. Since 0 is the only boundary point of the domain,
  the jumping points are 
 $F(1 \pm \sqrt{3}/3)=\mp 2\sqrt{3}/9$ and $F(0)=0$.  
 %
@@ -429,19 +423,28 @@ method can be found in \citet{malta}.
 The method is intended to solve systems with two equations and
  two unknowns of type $ F\left(p\right) = q $ with $ p, q \in 
 {\text{I\!R}}^2 $ and $ F $ should be a smooth function. In dealing specifically with critical points, they are assumed of just two types, either folds or cusps. 
-% Before addressing each of them, it is important to introduce that a point in the image of $ F $ is called a regular value if all of its pre-images are regular points, as previously defined. 
-A fold is a non-degenerate critical point such that:
-%
-\begin{itemize}
-\item the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ do not coincide.
-\end{itemize}
+% Before addressing each of them, it is important to introduce that a point in the image of $ F $ is called a regular value if all of its pre-images are regular points, as previously defined.
+Folds and cusps are non-degenerate 
+critical points such that near them, and by means of
+differentiable changes of variables in the domain and in the 
+image, they can be written, respectively, 
+as $(x,y)\mapsto (x,y^2)$, and $(x,y)\mapsto (x, y^3\pm xy)$,
+near the origin.
 
-In cases where the kernel $ K $ and the line $ T $ tangent to the critical set coincide, there is a cusp-like critical point. In general,  cusps are non-degenerate critical points such that:
+Following \citet{malta1993}, 
+% 
+a fold is a non-degenerate critical point such that
+%
+the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ do not coincide. When they do coincide, 
+and another
+criterion of non-degeneracy is satisfied, 
 %
 \begin{itemize}
-\item the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ coincide;
-\item for a smooth parametrization $ \gamma : \left( -\epsilon, \; \epsilon \right) \to {\text{I\!R}}^2 $ of $ C $ near $ p $, with $ \gamma \left(0\right) = p $ and $ \gamma^{\prime} \left(0\right) \neq 0 $, the angle $ \theta\left(\gamma\left(t\right)\right) $ between the kernel $ K\left(\gamma\left(t\right)\right) $ of $ J\left(\gamma\left(t\right)\right) $ and the tangent line $ T\left(\gamma\left(t\right)\right) $ to $ C $ satisfies $ \theta^{\prime}\left(0\right) \neq 0 $.
+% \item the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ coincide;
+\item for a smooth parametrization $ \gamma : \left( -\epsilon, \; \epsilon \right) \to {\text{I\!R}}^2 $ of $ C $ near $ p $, with $ \gamma \left(0\right) = p $ and $ \gamma^{\prime} \left(0\right) \neq 0 $, the angle $ \theta\left(\gamma\left(t\right)\right) $ between the kernel $ K\left(\gamma\left(t\right)\right) $ of $ JF\left(\gamma\left(t\right)\right) $ and the tangent line $ T\left(\gamma\left(t\right)\right) $ to $ C $ satisfies $ \theta^{\prime}\left(0\right) \neq 0 $,
 \end{itemize}
+the critical point  is a cusp.
+% . In general,  cusps are non-degenerate critical points such that:
 
 Within the scope of  functions from the plane to the plane, we 
 must introduce two descriptions of very important type of 
@@ -473,7 +476,6 @@ cusps and folds.
 
 % Faced with this fact, one of the difficulties is to apply the method of inversion of functions from te plane to the plane in engineering problems. The complexity in parameterizing functions that describe this type of problem and checking the properties and theorems that underlie the method are some of the difficulties. At the outset, the task of verifying whether the functions describing the mathematical model of a particular engineering problem is nice can be complex. 
 
-
 The methodology of inversion of functions from
 a subset of the plane to the plane is composed of three 
 fundamental steps: obtaining the critical set of $ F $, 
@@ -484,10 +486,10 @@ creating the bank of solved points and calculating the pre-images from an arbitr
 Knowing the critical set is fundamental in the inversion process, since it 
 allows the computation of the critical image which, as
 illustrated in the 1D example, are places where the number
-of solutions can change --- in these cases  we say that the 
+of solutions may change --- in these cases we say that the 
 solutions
 degenerate.
- In addition to tracing the regions where the continuation method does not face points of singularity in the inversion process, it also indicates the boundary
+ In addition to tracing the regions where the continuation method does not encounter points of singularity in the inversion process, it also indicates the boundary
  of the  different tiles, which is a primordial concept in the analysis of solution degeneration. 
 
 In the original procedure, \citet{malta} proposes various calculations and verifications in order to establish that, strictly speaking, the critical points obtained form the critical set as a whole. In addition, the computational routine still sorts the critical points and locates points of intersection of the curves in the image. Due to the difficulties mentioned above regarding the application of the technique to solve real engineering problems, some adaptations were made to the original method, so that it could be simplified without affecting its main attributes.
@@ -603,7 +605,7 @@ Here we present the critical curve for the mixture ethane + limonene for the ent
 	\end{center}
 \end{figure}
 
-Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}.
+Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}. Thus, it is clear that there is no obvious relationship between the thermodynamic critical curve and the loci of singularities of the Jacobian matrix.
 
 \subsection{Results at $T = 307.4 $ K and $y_1 = 0.998966$}
 
@@ -644,7 +646,7 @@ Critical images can intercept each other, although the critical curves in the do
 
 Since the mathematical critical curves represent the set of points at which the value of the determinant of the Jacobian matrix is equal to zero, it is expected that the numerical method may have problems approaching these curves continuously until the degeneracy condition occurs, that is, a change in the quantity of their pre-images --- and therefore the solutions of the problem --- because of the collapse of solutions at a certain point in the critical curve. This occurrence helps to explain some cases of divergence of numerical methods based on derivatives.
 
-Due to the nonlinearity of the problem, all the pre-images of a set of points in the image were obtained through the method of inversion of functions from the plane to the plane. The set of points in the image were arranged from $ q = \left(0,0\right) $ to a point sufficiently close to the critical image, equally spaced from each other and displaced only in the horizontal direction. In addition, each of the points in the image was identified by one color and their respective pre-images received the same color for all four sets of solutions mentioned above. Through this scheme, it was possible to analyze the behavior of the solutions in the domain and to estimate how close a pre-image of a given point $ q $ in the image approaches a critical curve, as $ q $ approaches the critical image.
+Due to the nonlinearity of the problem, all the pre-images of a set of points in the image were obtained through the method of inversion of functions from the plane to the plane. The set of points in the image were arranged from $ q = \left(0,0\right) $ to a point sufficiently close to the critical image, equally spaced from each other and displaced only in the horizontal direction. In addition, each of the points in the image was identified by one color (in grayscale) and their respective pre-images received the same color for all four sets of solutions mentioned above. Through this scheme, it was possible to analyze the behavior of the solutions in the domain and to estimate how close a pre-image of a given point $ q $ in the image approaches a critical curve, as $ q $ approaches the critical image.
 
 \begin{figure}[!ht]
 \centering
@@ -678,7 +680,7 @@ Due to the nonlinearity of the problem, all the pre-images of a set of points in
 
 Figure \ref{fig:points_image} presents the sequence of points inverted in the image. The squares in the figure are the bank of solved points. In this situation, four pre-images are observed (in accordance with the number of solutions of the original nonlinear problem). Obviously, these solutions are not roots of the original problem, since we have $ q = \left(0,0\right) $ for the physical nonlinear problem. On the other hand, as pointed previously, we maintain the same numbering of the roots (1 to 4).
 
-The sequences of inverted points --- in the domain --- for roots 3 and 4 (high pressure roots) are represented by Figure \ref{fig:points_domain_3_4}. The end point of each of the sequences, that is, the one in which the pre-image moves closer to the critical curve (represented by the blue color), is being shown in detail by zooming. We can clearly observe the occurrence of a degeneration scenario: two solutions collapsing simultaneously to the same point of the critical curve. It should be noted that the points can be as close as desired to the critical set, which depends on the level of approximation that has been used, since the continuation method does not cross the critical curve during the inversion process. However, it is possible to estimate the point of the critical curve in the domain in which the points of each of the sequences will degenerate. Just draw a straight line which connects to each other, and check what is the intersection point between this line and the critical curve. On the other hand, Figures \ref{fig:points_domain_1} and \ref{fig:points_domain_2} contain the sequence of inverted points regarding roots 1 and 2, respectively. In these cases, the inverted points are not close to the critical curves.
+The sequences of inverted points --- in the domain --- for roots 3 and 4 (high pressure roots) are represented by Figure \ref{fig:points_domain_3_4}. The end point of each of the sequences, that is, the one in which the pre-image moves closer to the critical curve (represented by the white color), is being shown in detail by zooming. We can clearly observe the occurrence of a degeneration scenario: two solutions collapsing simultaneously to the same point of the critical curve. It should be noted that the points can be as close as desired to the critical set, which depends on the level of approximation that has been used, since the continuation method does not cross the critical curve during the inversion process. However, it is possible to estimate the point of the critical curve in the domain in which the points of each of the sequences will degenerate. Just draw a straight line which connects to each other, and check what is the intersection point between this line and the critical curve. On the other hand, Figures \ref{fig:points_domain_1} and \ref{fig:points_domain_2} contain the sequence of inverted points regarding roots 1 and 2, respectively. In these cases, the inverted points are not close to the critical curves.
 
 Another very important factor to be considered is the positioning of the elements of each of the calculated pre-image sequences. In order for solution degeneration to occur, the degenerated points must be located on different tiles. As one point in the image approaches a critical image, two of its respective pre-images may approach a critical curve. According to \citet{malta}, the scenario that characterizes the degeneracy of solutions in pairs, as is the case of the problem studied, is that the solutions are approaching the vicinity of a critical point of the fold type. The creation of a robust bank of solved points is also essential in this analysis, since it would not be possible to calculate the correct pre-images if the inversion method took as an initial guess a point in the bank of solved points in the domain that was located on a different tile than the one in which the desired solution is.
 
@@ -710,7 +712,7 @@ At $T = 304.5$ K and $y_1 = 0.99945$, the dew point curve still exhibits a doubl
 
 \subsubsection{Inversion process --- approaching  the critical image}
 
-Figure \ref{fig:imagem_S} shows the sequence of points in the image to be inverted, from $ q = \left(0, 0\right) $ to a point sufficiently close to the critical image. Following the same trend, the points in the image were identified by distinct colors, and their pre-images respected the established organization. The bank of solved points was randomly arranged in the image and each of its pre-images was obtained. In relation to the previous problem, it is not possible to use the same bank of solved points, since two parameters were varied, temperature and pressure, what makes the system have absolutely different thermodynamic characteristics. The zoom in Figure \ref{fig:imagem_S} shows that the blue point does not intersect or even cross the critical image.
+Figure \ref{fig:imagem_S} shows the sequence of points in the image to be inverted, from $ q = \left(0, 0\right) $ to a point sufficiently close to the critical image. Following the same trend, the points in the image were identified by distinct colors, and their pre-images respected the established organization. The bank of solved points was randomly arranged in the image and each of its pre-images was obtained. In relation to the previous problem, it is not possible to use the same bank of solved points, since two parameters were varied, temperature and pressure, what makes the system have absolutely different thermodynamic characteristics. The zoom in Figure \ref{fig:imagem_S} shows that the white point does not intersect or even cross the critical image.
 
 Figure \ref{fig:domain_S} shows the behavior of each of the pre-images, for the two solutions at high pressures (roots 2 and 3), obtained through the method of inversion of functions from the plane to the plane. As expected, the behavior of the sequence of pre-images of the two solutions in question suggests that as we approach the critical image two solutions approach the critical curve until both collapse in a given point of the critical curve. This behavior characterizes the degeneracy of solutions.
 
@@ -734,18 +736,18 @@ It is known that, according to the definition, one of the conditions for charact
 \label{fig:L_path_domain_image}
 \end{figure}
 
-In turn, Figure \ref{fig:L_S} illustrates the L-shaped path of the inversion process in the domain to the last point of the sequence in the image (the one closest to the critical image, marked in blue in Figure \ref{fig:imagem_S}). Again, we observed that the two pre-images, corresponding to roots 2 and 3, tend to degenerate into a single pre-image. In addition, one can note the importance of knowing the critical set of the problem and, consequently, the tiles that form the domain of the system. They define the points of singularities that may cause problems to the continuation method in the process of creating the L-shaped path of the inversion step and consequently provide the analysis of the degeneracy of solutions.
+In turn, Figure \ref{fig:L_S} illustrates the L-shaped path of the inversion process in the domain to the last point of the sequence in the image (the one closest to the critical image, marked in white in Figure \ref{fig:imagem_S}). Again, we observed that the two pre-images, corresponding to roots 2 and 3, tend to degenerate into a single pre-image. In addition, one can note the importance of knowing the critical set of the problem and, consequently, the tiles that form the domain of the system. They define the points of singularities that may cause problems to the continuation method in the process of creating the L-shaped path of the inversion step and consequently provide the analysis of the degeneracy of solutions.
 
 \begin{figure}[!ht]
 	\begin{center}
 		\includegraphics[scale=0.50]{caminhos_L_degeneracao_dominio2.pdf}
-		\caption{The \enquote{L} path in the domain, Roots 2 and 3, for $T$ = 304.5 K and $y_1 = 0.99945$.}\label{fig:L_S}
+		\caption{The L-shaped path in the domain, Roots 2 and 3, for $T$ = 304.5 K and $y_1 = 0.99945$.}\label{fig:L_S}
 	\end{center}
 \end{figure}
 
 The use of the bank of solved points of the previous problem would not be possible in this problem because, in addition to the number of distinct pre-images in each of the problems, possibly the points of the bank of solved points in the domain could be located in tiles different from the desired pre-images. Since the points contained in the bank act as the initial guess for the method of continuation in the inversion step, the L-shaped path would necessarily cross the critical curve of the problem, which could cause an error in the computational routine.
 
-Finally, Figure 9 shows the L-shaped path of the problem at T = 280 K and y1 = 0.99945. Under such conditions, the problem has only one solution, despite the sigmoid behavior, as can be seen in Figure 1.
+Finally, Figure 9 shows the L-shaped path of the problem at $T = 280$ K and $y_1 = 0.99945$. Under such conditions, the problem has only one solution, despite the sigmoid behavior, as can be seen in Figure 1.
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -817,7 +819,7 @@ Still considering the context of the system temperature variation, fixing the mo
 
 Of course, the robustness of the bank of solved points does not mean strictly that the larger the amount of pre-images stored, the better the quality of the bank of solved points. One should consider the fact that the inversion step evaluates the distance between each point stored in the bank of solved points in the image and the point to be inverted. Thus, high amounts of stored points can cause slowness in the process. On the other hand, bank of solved points containing many elements can mean that they are located on different tiles, which increases the chances of success in performing the inversion step. In general, to use a single bank of solved points to obtain the pre-images of a number of distinct problems (under the circumstances already specified), the condition of using a point as the initial guess that is on the same tile in all problems must be satisfied.
 
-Figure \ref{fig:unique_bank_image} shows the L-shaped path in the image of the inversion process of the point $ q = \left(0,0\right) $ for all the problems analyzed. The point of the bank of solved points (represented by the blue square), was obtained using the system at $ T = 299 $ K, and used in the inversion process of all systems. Note that the tile on which the point of the bank of solved points in the image and the point $ q $ are located is the same, in all cases. In turn, Figures \ref{fig:unique_bank_root_1} -- \ref{fig:unique_bank_root_3} show the L-shaped paths in the domain, referring to each root of the problems, with the system temperature specified. The similarity of colors identifies the respective points in the domain and image. Note that the inversion process --- the creation of the L-shaped path --- always starts from the same point of the bank of points solved, created with $ T = 299 $ K. In the results shown in Figure \ref{fig:sequencia_inversao}, only the point closest point contained in the bank of solved points in relation to $ q $ is shown. The other points were omitted.
+Figure \ref{fig:unique_bank_image} shows the L-shaped path in the image of the inversion process of the point $ q = \left(0,0\right) $ for all the problems analyzed. The point of the bank of solved points (represented by the black square), was obtained using the system at $ T = 299 $ K, and used in the inversion process of all systems. Note that the tile on which the point of the bank of solved points in the image and the point $ q $ are located is the same, in all cases. In turn, Figures \ref{fig:unique_bank_root_1} -- \ref{fig:unique_bank_root_3} show the L-shaped paths in the domain, referring to each root of the problems, with the system temperature specified. The similarity of colors identifies the respective points in the domain and image. Note that the inversion process --- the creation of the L-shaped path --- always starts from the same point of the bank of points solved, created with $ T = 299 $ K. In the results shown in Figure \ref{fig:sequencia_inversao}, only the point closest point contained in the bank of solved points in relation to $ q $ is shown. The other points were omitted.
 
 In all the results obtained, the use of a single bank of solved points had no adverse effect in obtaining results with the accuracy defined in the continuation predictor-corrector method. The roots were obtained with satisfactory accuracy, similarly to the case when the inversion process is performed with the bank of solved points created using the same temperature of the system in which it is desired to obtain the pre-images. However, the observed difference is that, in general, the method trace a longer path until solutions are obtained. However, there are cases in which the point bank of solved points in the domain may be located closer to the desired root, due to the non-linearity of the system. Therefore, this approach can be understood as the use of a \enquote{non-ideal} initial guess in the numerical inversion process.
 
