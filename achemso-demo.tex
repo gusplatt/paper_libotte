@@ -155,7 +155,7 @@ Double retrograde vaporization is a phase behavior phenomenon that occurs close 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Double retrograde vaporization is a phase behavior phenomenon that occurs close to the critical point of binary mixtures, that is, the point where there are no phase boundaries and therefore the distinction between them does not exist, causing the mixture to cease to exist as well. It occurs in mixtures characterized by involving a solvent with high volatility relative to the solute contained in the mixture. More specifically in relation to the mixture to be studied, composed of ethane + limonene, the solvent boils at 184.6 K, while the boiling point of the solute is 448.2 K. This tendency towards evaporation of ethane in relation to limonene causes its volatility to be high, satisfying one of the conditions of occurrence.
+Double retrograde vaporization is a phase behavior phenomenon that occurs close to the critical point of binary (and multicomponent) mixtures, that is, the point where there are no phase boundaries and therefore the distinction between them does not exist. It occurs in mixtures characterized by involving a solvent with high volatility relative to the solute contained in the mixture. More specifically in relation to the mixture to be studied, composed of ethane + limonene, the solvent boils at 184.6 K, while the boiling point of the solute is 448.2 K. This tendency towards evaporation of ethane in relation to limonene causes its volatility to be high, satisfying one of the conditions of occurrence.
 
 The phenomenon corresponds to a special shape of the dew-point curve, exhibiting a \enquote{S} shape (with three dew points) or a double-dome structure (with four dew points), for specific system temperature and composition. Especially in the case of double-dome manifestation, the phenomenon occurs within a very limited temperature range, which is slightly above to the critical temperature of the more volatile component. We must mention that the composition of vapor phase is arbitrarily chosen, in order to produce the thermodynamic phenomenon. In other words, any mole fraction of the solvent in the vapor phase that is chosen and is within the range at which the dew point curve shows three (or four) intersections with respect to the pressure will produce the phenomenon, provided that the other conditions are also met.
 
@@ -204,6 +204,13 @@ where $p$ is a point in the domain and $q$ is a point in the
 image (range) of $F$. Ordinarily, we are interested to 
 solve $F(p) = (0,0)$ (where $q=(0,0)$ represents the null
  vector in the Euclidean plane).
+
+Just to illustrate the high nonlinearity of the system, it must be stressed that the fugacity coefficient calculated by \citet{peng_robinson} equation of state is represented by:
+\begin{equation}
+\ln{\hat{\phi}_{i}} = \dfrac{b_{i}}{b_{m}}\left(Z - 1\right) - \ln{\left(Z - B\right)} - \dfrac{A}{2\sqrt{2}B}\left(\dfrac{\sum\limits_{j = 1}^{c}x_{j}a_{ij}}{a_{m}} - \dfrac{b_{i}}{b_{m}}\right)\ln{\left(\dfrac{Z+\left(1+\sqrt{2}\right)B}{Z-\left(1-\sqrt{2}\right)B}\right)}
+\end{equation}
+
+The terms in the equation ($b_i$, $b_m$, $a_{ij}$, $a_m$, $A$ and $B$) are the standard quantities in the application of the \citet{peng_robinson} equation for a mixture (the subscript $m$ indicates a ``mixture quantity'' and $i$ refers to a pure component). Furthermore, the compressibility factor $Z$ is obtained by the solution of the cubic polynomial --- which, again, illustrates some difficulties associated to the solutions of this nonlinear system.
 
 \subsection{Some features of the numerical 
  inversion of 
@@ -514,8 +521,8 @@ Table \ref{tab:resultados_pontos_orvalho_pressoes} presents the compositions and
 \begin{tabular}{cccccccc}
 \hline\hline
 \multirow{3}{*}{Roots} & \multicolumn{2}{c}{$ y_{1} = 0.998966 $} & & \multicolumn{4}{c}{$ y_{1} = 0.99945 $} \\
- & \multicolumn{2}{c}{$ T = 307.4 $ K} & & \multicolumn{2}{c}{$ T = 304.5 $ K} & \multicolumn{2}{c}{$ T = 280 $ K} \\ \cline{2-3} \cline{5-8} 
- & $ x_{1} \left( mol / mol \right) $ & $ P \left( kPa \right) $ & & $ x_{1} \left( mol / mol \right) $ & $ P \left( kPa \right) $ & $ x_{1} \left( mol / mol \right) $ & $ P \left( kPa \right) $ \\ \hline
+ & \multicolumn{2}{c}{$ T = 307.4 $ K} & & \multicolumn{2}{c}{$ T = 304.5 $ K} & \multicolumn{2}{c}{$ T = 280.0 $ K} \\ \cline{2-3} \cline{5-8} 
+ & $ x_{1} \left( mol / mol \right) $ & $ P \left( \textrm{kPa} \right) $ & & $ x_{1} \left( mol / mol \right) $ & $ P \left( \textrm{kPa} \right) $ & $ x_{1} \left( mol / mol \right) $ & $ P \left( \textrm{kPa} \right) $ \\ \hline
 1 & 0.1567 & 619.3 & & 0.3064 & 1209.4 & 0.0736 & 175.4 \\
 2 & 0.9829 & 4859.5 & & 0.8442 & 3900.9 & --- & --- \\
 3 & 0.9918 & 4931.2 & & 0.9917 & 4671.6 & --- & --- \\
@@ -543,7 +550,7 @@ Here we present the critical curve for the mixture ethane + limonene for the ent
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{curva_critica_saturacao.pdf}
-		\caption{Critical and saturation curves (for pure components) in the system ethane + limonene.}\label{fig:critical_thermo}
+		\caption{Critical (thermodynamic) and saturation curves (for pure components) in the system ethane + limonene.}\label{fig:critical_thermo}
 	\end{center}
 \end{figure}
 
