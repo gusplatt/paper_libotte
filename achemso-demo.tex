@@ -112,7 +112,7 @@
 %% optional argument to \title.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[An \textsf{achemso} demo]
-  {Geometry of Double Retrograde Vaporization Prediction}
+  {Geometry of Phase Equilibrium with an Application to Double Retrograde Vaporization Prediction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Some journals require a list of abbreviations or keywords to be
@@ -524,7 +524,16 @@ Table \ref{tab:resultados_pontos_orvalho_pressoes} presents the compositions and
 \end{table}
 
 One can note that considering the data of the first case presented in Table \ref{tab:resultados_pontos_orvalho_pressoes}, that one solution corresponds to a low pressure root (root 1) and the others are high pressure roots (which are close to each other). From the point of view of the calculation techniques --- using classical numerical methods, such as Newton-Raphson methods --- we are interested in robust methodologies capable not only to find all roots, but also to find  the high pressure roots in a robust way. In order to better understand the geometry of the non-algebraic system of equilibrium, we consider some modified problems (perturbed versions of the original one) --- which bear no immediate physical meaning --- and use the same numbering of the roots (1 to 4).
- 
+
+We performed a thermodynamic stability check, using the tangent plane criterion \citep{michelsen, ngh}, to all dew point presented in Table \ref{tab:resultados_pontos_orvalho_pressoes}. As an example, Figure \ref{fig:distance_function} shows the modified distance function at the vicinities of the point $ y_{1} = 0.9917 $, considering $ T = 304.5 $ K and $ y_{1} = 0.99945 $. We noted that the distance function is equal to zero in the saturation condition and is greater than zero for other values.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.50]{funcao_distancia.pdf}
+		\caption{Dimensionless distance function at $ T = 304.5 $ K and $ y_{1} = 0.99945 $.}\label{fig:distance_function}
+	\end{center}
+\end{figure}
+
 \subsection{Thermodynamic critical point calculations}
 
 Here we present the critical curve for the mixture ethane + limonene for the entire range of compositions. As reported previously, the term \enquote{critical curve} can exhibit two different meanings: the mathematical  and the thermodynamic.
@@ -534,11 +543,11 @@ Here we present the critical curve for the mixture ethane + limonene for the ent
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{curva_critica_saturacao.pdf}
-		\caption{The thermodynamic saturation curve in the system ethane + limonene.}\label{fig:critical_thermo}
+		\caption{Critical and saturation curves (for pure components) in the system ethane + limonene.}\label{fig:critical_thermo}
 	\end{center}
 \end{figure}
 
-Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand. We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}. Thus, it is clear that there is no obvious relationship between the thermodynamic critical curve and the loci of singularities of the Jacobian matrix.
+Figure \ref{fig:critical_thermo} illustrates the critical curve, in the temperature-pressure plane, for the mixture at hand, as well as the saturation curves for pure components (dashed curves; calculated with the same thermodynamic model). We observe a continuous and unique curve connecting the two pure components. Thus, this system can be classified as Type I, accordingly to the classification of binary mixtures of Van Konynenburg and Scott \cite{classif}. Thus, it is clear that there is no obvious relationship between the thermodynamic critical curve and the loci of singularities of the Jacobian matrix.
 
 \subsection{Results at $T = 307.4 $ K and $y_1 = 0.998966$}
 
