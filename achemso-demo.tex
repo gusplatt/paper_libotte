@@ -366,9 +366,7 @@ Following \citet{malta1993},
 % 
 a fold is a non-degenerate critical point such that
 %
-the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ do not coincide. When they do coincide, 
-and another
-criterion of non-degeneracy is satisfied, 
+the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ do not coincide. When they do coincide, and another criterion of non-degeneracy is satisfied, 
 %
 \begin{itemize}
 % \item the kernel $ K $ of the Jacobian and the tangent line $ T $ to the critical set in $ p $ coincide;
@@ -460,7 +458,7 @@ Once  the bank of solved points has been built,
 
 Choosing the point that will generate the shortest path does not guarantee that the segment will not cross some critical curve. If $ q_{0} $ is located on a different tile than $ q $, the inversion process may have problems, since the segment will necessarily cross some image of a critical or boundary curve before $ q $ is reached. Therefore, it is convenient that the bank of solved points be formed by points contained in different tiles, according to the problem solving requirements.
 
-From the point of view of user interference in relation to each of the steps of the method, the creation of the bank of solved points is the most costly stage, especially when they are very extensive and there are several pre-images, according to each specific problem. However, the homotopy-continuation technique used in the inversion step (see more in \citet{allgower}) allows the use of a single bank in solving different problems of the same genre, that is, with variation of parameters, as shown in \citet{canadian}, which solved the double azeotropy problem of the system composed of benzene + hexafluorobenzene at different values of the system pressure, with the same bank of solved points generated at $ P = 20 \; kPa $.
+From the point of view of user interference in relation to each of the steps of the method, the creation of the bank of solved points is the most costly stage, especially when they are very extensive and there are several pre-images, according to each specific problem. However, the homotopy-continuation technique used in the inversion step (see more in \citet{allgower}) allows the use of a single bank in solving different problems of the same genre, that is, with variation of parameters, as shown in \citet{canadian}, which solved the double azeotropy problem of the system composed of benzene + hexafluorobenzene at different values of the system pressure, with the same bank of solved points generated at $ P = 20 $ kPa.
  
 \subsubsection{Inversion of an arbitrary point}
 
@@ -522,7 +520,7 @@ Table \ref{tab:resultados_pontos_orvalho_pressoes} presents the compositions and
 \hline\hline
 \multirow{3}{*}{Roots} & \multicolumn{2}{c}{$ y_{1} = 0.998966 $} & & \multicolumn{4}{c}{$ y_{1} = 0.99945 $} \\
  & \multicolumn{2}{c}{$ T = 307.4 $ K} & & \multicolumn{2}{c}{$ T = 304.5 $ K} & \multicolumn{2}{c}{$ T = 280.0 $ K} \\ \cline{2-3} \cline{5-8} 
- & $ x_{1} \left( mol / mol \right) $ & $ P \left( \textrm{kPa} \right) $ & & $ x_{1} \left( mol / mol \right) $ & $ P \left( \textrm{kPa} \right) $ & $ x_{1} \left( mol / mol \right) $ & $ P \left( \textrm{kPa} \right) $ \\ \hline
+ & $ x_{1} $ (mol/mol) & $ P \left( \textrm{kPa} \right) $ & & $ x_{1} $ (mol/mol) & $ P \left( \textrm{kPa} \right) $ & $ x_{1} $ (mol/mol) & $ P \left( \textrm{kPa} \right) $ \\ \hline
 1 & 0.1567 & 619.3 & & 0.3064 & 1209.4 & 0.0736 & 175.4 \\
 2 & 0.9829 & 4859.5 & & 0.8442 & 3900.9 & --- & --- \\
 3 & 0.9918 & 4931.2 & & 0.9917 & 4671.6 & --- & --- \\
@@ -565,7 +563,7 @@ Here, we present a deeper analysis of the mathematical critical curves in this s
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.50]{curvas_criticas_dominio_new.pdf}
-		\caption{A detailed view of the critical curves.}\label{fig:sinais}
+		\caption{A detailed view of the critical curves at $ T = 307.4 $ K and $ y_{1} = 0.998966 $.}\label{fig:sinais}
 	\end{center}
 \end{figure}
  
@@ -649,7 +647,7 @@ Hereafter, we detail the inversion process for the point close to the critical i
   \caption{L-shaped path in the domain for the roots 3 and 4.}
   \label{fig:L_path_domain}
 \end{subfigure}
-\caption{}
+\caption{Detail of the inversion process of a point close to the critical image and the respective L-shaped paths in the domain}
 \label{fig:L_path_domain_image}
 \end{figure}
 
@@ -672,16 +670,16 @@ It is known that, according to the definition, one of the conditions for charact
 \begin{subfigure}{.48\textwidth}
   \centering
   \includegraphics[width=\linewidth]{imagem3.pdf}
-  \caption{Sequence of inverted points (image) for $T$ = 304.5 K and $y_1 = 0.99945$.}
+  \caption{Sequence of inverted points in the image.}
   \label{fig:imagem_S}
 \end{subfigure}\hfill
 \begin{subfigure}{.48\textwidth}
   \centering
   \includegraphics[width=\linewidth]{dominio3.pdf}
-  \caption{Sequence of inverted points (domain) for $T$ = 304.5 K and $y_1 = 0.99945$ (Roots 2 and 3).}
+  \caption{Sequence of pre-images in the domain (roots 2 and 3).}
   \label{fig:domain_S}
 \end{subfigure}
-\caption{}
+\caption{Sequence of inverted points towards the critical image and the respective pre-images in the domain at $T$ = 304.5 K and $y_1 = 0.99945$. The pre-images have colors corresponding to the inverted points.}
 \label{fig:L_path_domain_image}
 \end{figure}
 
